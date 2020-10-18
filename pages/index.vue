@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import config from '../nuxt.config';
 export default {
   data() {
     return {
@@ -61,7 +62,7 @@ export default {
   },
   mounted() {
     this.$axios
-      .get('http://127.0.0.1:3000/api/rides')
+      .get(`${config.custom.api}/api/rides`)
       .then(response => (this.rides = response.data));
   }
 }
