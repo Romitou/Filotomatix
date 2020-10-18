@@ -3,14 +3,17 @@
     <v-navigation-drawer
       v-model="drawer"
       absolute
-      bottom
       temporary
     >
 
       <v-img
         src="https://cache.filevirtuelle.parcasterix.fr/images/pages/nav.jpg"
         height="175"
-      ></v-img>
+      >
+        <v-row class="fill-height pa-2" align="end" justify="center">
+          <v-chip>Nom d'utilisateur</v-chip>
+        </v-row>
+      </v-img>
       <v-list
         nav
         dense
