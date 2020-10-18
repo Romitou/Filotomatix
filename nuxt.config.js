@@ -75,10 +75,6 @@ export default {
 
   serverMiddleware: [
     '~/api'
-  ],
-
-  custom: {
-    'api': 'https://filotomatix.herokuapp.com'
-  }
+  ]
 
 }
