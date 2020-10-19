@@ -71,17 +71,18 @@
 </template>
 
 <script>
-import config from '../app.config'
+import { config } from '@/app.config';
+
 export default {
-  data () {
+  data() {
     return {
       rides: null
-    }
+    };
   },
-  mounted () {
+  mounted() {
     this.$axios
-      .get(`${config.api}/api/rides`)
-      .then(response => (this.rides = response.data))
+      .get(`${config.apiUrl}/api/rides`)
+      .then(response => (this.rides = response.data));
   }
-}
+};
 </script>

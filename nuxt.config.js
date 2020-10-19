@@ -40,8 +40,8 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    // https://go.nuxtjs.dev/content
-    '@nuxt/content'
+    // Bootstrap modules
+    '~/modules/bootstrap'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -74,7 +74,7 @@ export default {
   },
 
   serverMiddleware: [
-    '~/api'
+    '~/modules/api'
   ]
 
-}
+};
