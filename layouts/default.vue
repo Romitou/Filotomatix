@@ -5,7 +5,6 @@
       absolute
       temporary
     >
-
       <v-img
         src="https://cache.filevirtuelle.parcasterix.fr/images/pages/nav.jpg"
         height="175"
@@ -36,7 +35,7 @@
           </v-list-item-icon>
           <v-list-item-title>Se connecter</v-list-item-title>
         </v-list-item>
-        <v-divider class="ma-2"></v-divider>
+        <v-divider class="ma-2" />
         <v-list-item link>
           <v-list-item-icon>
             <v-icon>mdi-help</v-icon>
@@ -64,7 +63,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       clipped: false,
       drawer: false,
@@ -73,7 +72,7 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'Filotomatix'
-    }
+    };
   }
-}
+};
 </script>
