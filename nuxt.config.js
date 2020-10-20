@@ -17,6 +17,7 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
+    '~/assets/app.scss'
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
@@ -36,23 +37,21 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
+    '@nuxt/http',
     '@nuxtjs/pwa',
-    // Bootstrap modules
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
+    // Custom modules
     '~/modules/bootstrap'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
-
-  // Content module configuration (https://go.nuxtjs.dev/config-content)
-  content: {},
+  axios: {
+    baseUrl: process.env.API_URL
+  },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
     theme: {
       dark: false,
       themes: {
@@ -75,6 +74,14 @@ export default {
 
   serverMiddleware: [
     '~/modules/api'
-  ]
+  ],
+
+  publicRuntimeConfig: {
+    apiUrl: process.env.API_URL
+  },
+
+  privateRuntimeConfig: {
+    mongoUri: process.env.MONGO_URI
+  }
 
 };

@@ -12,6 +12,7 @@ module.exports = {
   ],
   rules: {
     semi: ['error', 'always'],
-    'space-before-function-paren': 0
+    'space-before-function-paren': 0,
+    curly: 0
   }
 };

@@ -9,6 +9,8 @@ export default mongoose.model('Ride',
     queueLength: Number,
     maxReservations: Number,
     reservations: Number,
-    waitTimeMins: Number
+    waitTimeMins: Number,
+    openingTime: Date,
+    closingTime: Date
   })
 );

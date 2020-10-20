@@ -1,6 +1,8 @@
 <template>
   <v-container
+    fill-height
     fluid
+    class="ma-0 pa-0"
   >
     <v-row
       align="start"
@@ -11,18 +13,23 @@
       >
         <v-card
           hover
+          height="250"
+          min-width="130"
         >
           <v-img
             :src="ride.image"
             class="white--text align-end"
-          >
-            <v-card-title v-text="ride.name" />
-          </v-img>
+            aspect-ratio="4:3"
+            height="150"
+          />
 
-          <v-card-text class="text--secondary">
+          <v-card-subtitle class="text-truncate">
+            <div class="blue-grey--text subtitle-2">
+              {{ ride.name }}
+            </div>
             <div>
               <div v-if="ride.status === 'closed'">
-                <div class="red--text mb-2">
+                <div class="red--text">
                   <v-icon small color="red">
                     mdi-cancel
                   </v-icon> Fermé
@@ -34,7 +41,7 @@
                 </div>
               </div>
               <div v-else-if="ride.status === 'full'">
-                <div class="red--text mb-2">
+                <div class="red--text">
                   <v-icon small color="red">
                     mdi-account-cancel
                   </v-icon> Complet
@@ -46,7 +53,7 @@
                 </div>
               </div>
               <div v-else>
-                <div class="green--text mb-2">
+                <div class="green--text">
                   <v-icon small color="green">
                     mdi-check-circle-outline
                   </v-icon> Ouvert
@@ -59,11 +66,11 @@
                 <div v-else>
                   <v-icon small>
                     mdi-clock-outline
-                  </v-icon> {{ ride.waitTimeMins }} minutes
+                  </v-icon> {{ ride.waitTimeMins }} minute{{ ride.waitTimeMins > 1 ? 's' : '' }}
                 </div>
               </div>
             </div>
-          </v-card-text>
+          </v-card-subtitle>
         </v-card>
       </v-col>
     </v-row>
@@ -71,18 +78,25 @@
 </template>
 
 <script>
-import { config } from '@/app.config';
-
 export default {
+  middleware: 'auth',
+  auth: false,
   data() {
     return {
-      rides: null
+      rides: []
     };
   },
   mounted() {
-    this.$axios
-      .get(`${config.apiUrl}/api/rides`)
-      .then(response => (this.rides = response.data));
+    this.refreshData();
+    setInterval(this.refreshData, 10000);
+  },
+  methods: {
+    refreshData() {
+      this.$axios.get('/api/rides')
+        .then((response) => {
+          this.rides = response.data;
+        });
+    }
   }
 };
 </script>
