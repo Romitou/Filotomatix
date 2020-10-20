@@ -22,6 +22,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    { src: '~/plugins/qr-code' }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -48,6 +49,34 @@ export default {
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
     baseUrl: process.env.API_URL
+  },
+
+  // Auth module configuration
+  auth: {
+    strategies: {
+      local: {
+        scheme: 'refresh',
+        token: {
+          property: 'accessToken',
+          maxAge: 1800,
+          type: 'Bearer'
+        },
+        refreshToken: {
+          property: 'refreshToken',
+          data: 'refreshToken',
+          maxAge: 60 * 60 * 24 * 30 // 30 days
+        },
+        user: {
+          property: 'user'
+        },
+        endpoints: {
+          login: { url: '/api/auth/login', method: 'post' },
+          refresh: { url: '/api/auth/refresh', method: 'post' },
+          user: { url: '/api/auth/user', method: 'get' },
+          logout: { url: '/api/auth/logout', method: 'post' }
+        }
+      }
+    }
   },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)

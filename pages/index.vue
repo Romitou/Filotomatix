@@ -9,7 +9,7 @@
     >
       <v-col
         v-for="ride in rides"
-        :key="ride.name"
+        :key="ride._id"
       >
         <v-card
           hover
@@ -93,9 +93,7 @@ export default {
   methods: {
     refreshData() {
       this.$axios.get('/api/rides')
-        .then((response) => {
-          this.rides = response.data;
-        });
+        .then(r => (this.rides = r.data));
     }
   }
 };
