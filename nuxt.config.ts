@@ -58,7 +58,7 @@ export default {
         scheme: 'refresh',
         token: {
           property: 'accessToken',
-          maxAge: 1800,
+          maxAge: 60 * 60 * 24 * 30, // 30 days
           type: 'Bearer'
         },
         refreshToken: {
@@ -74,6 +74,10 @@ export default {
           refresh: { url: '/api/auth/refresh', method: 'post' },
           user: { url: '/api/auth/user', method: 'get' },
           logout: { url: '/api/auth/logout', method: 'post' }
+        },
+        redirect: {
+          home: '/',
+          login: '/login'
         }
       }
     }
@@ -103,14 +107,6 @@ export default {
 
   serverMiddleware: [
     '~/modules/api'
-  ],
-
-  publicRuntimeConfig: {
-    apiUrl: process.env.API_URL
-  },
-
-  privateRuntimeConfig: {
-    mongoUri: process.env.MONGO_URI
-  }
+  ]
 
 };

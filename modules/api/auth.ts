@@ -29,8 +29,9 @@ router.post('/login', (req, res) => {
   if (!email) throw new Error('invalid mail');
   const refreshToken = getRandomToken();
 
-  const accessToken = jsonwebtoken.sign({ email }, privateKey, { expiresIn });
-  refreshTokens[refreshToken] = { accessToken, user: { email } };
+  const user = { email, admin: true };
+  const accessToken = jsonwebtoken.sign(user, privateKey, { expiresIn });
+  refreshTokens[refreshToken] = { accessToken, user };
   res.json({ accessToken, refreshToken });
 });
 
@@ -43,9 +44,9 @@ router.post('/refresh', (req, res) => {
   const newRefreshToken = getRandomToken();
   refreshTokens[refreshToken] = undefined;
 
-  const accessToken = jsonwebtoken.sign({ email: user.email }, privateKey, { expiresIn });
+  const accessToken = jsonwebtoken.sign({ email: user.email, admin: user.admin }, privateKey, { expiresIn });
   refreshTokens[newRefreshToken] = { accessToken, user };
-  res.json({ token: { accessToken, refreshToken: newRefreshToken } });
+  res.json({ accessToken, refreshToken: newRefreshToken });
 });
 
 // [GET] /user
