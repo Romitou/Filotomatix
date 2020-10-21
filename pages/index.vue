@@ -83,12 +83,16 @@ export default {
   auth: false,
   data() {
     return {
-      rides: []
+      rides: [],
+      interval: undefined
     };
   },
   mounted() {
     this.refreshData();
-    setInterval(this.refreshData, 10000);
+    this.interval = setInterval(this.refreshData, 10000);
+  },
+  beforeDestroy() {
+    clearInterval(this.interval);
   },
   methods: {
     refreshData() {
