@@ -1,35 +1,31 @@
 <template>
   <div class="mt-3">
     <v-card
-      class="d-flex justify-center mb-6"
-      flat
+      class="mx-auto d-flex justify-center mb-6"
+      width="600"
+      rounded
     >
-      <v-card
-        class="mx-auto"
-        rounded
-      >
-        <v-card-text class="text--primary">
-          <div>
-            Présentez ce QR Code au service clientèle pour vous identifier.
-          </div>
-          <div class="text-center mt-2">
-            <qrcode :value="this.$auth.user.email" :options="{ width: 150 }" />
-          </div>
-          <br />
-          <v-btn
-            color="blue-grey"
-            class="white--text"
-            @click="logout"
+      <v-card-text class="text--primary">
+        <div>
+          Présentez ce QR Code au service clientèle pour vous identifier.
+        </div>
+        <div class="text-center mt-2">
+          <qrcode :value="this.$auth.user.email" :options="{ width: 150 }" />
+        </div>
+        <br>
+        <v-btn
+          color="blue-grey"
+          class="white--text"
+          @click="logout"
+        >
+          Déconnexion
+          <v-icon
+            right
           >
-            Déconnexion
-            <v-icon
-              right
-            >
-              mdi-logout-variant
-            </v-icon>
-          </v-btn>
-        </v-card-text>
-      </v-card>
+            mdi-logout-variant
+          </v-icon>
+        </v-btn>
+      </v-card-text>
     </v-card>
   </div>
 </template>

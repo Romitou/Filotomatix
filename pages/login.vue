@@ -1,58 +1,54 @@
 <template>
   <div class="mt-3">
     <v-card
-      class="d-flex justify-center mb-6"
-      flat
+      class="mx-auto d-flex justify-center mb-6"
+      width="600"
+      rounded
     >
-      <v-card
-        class="mx-auto"
-        rounded
-      >
-        <v-card-text class="text--primary">
-          <div>
-            Veuillez saisir une adresse mail ainsi qu'un mot de passe pour vous connecter. Si vous n'avez pas encore de compte, il sera automatiquement créé.
-          </div>
-          <v-form
-            ref="form"
-            v-model="valid"
-            lazy-validation
+      <v-card-text class="text--primary">
+        <div>
+          Veuillez saisir une adresse mail ainsi qu'un mot de passe pour vous connecter. Si vous n'avez pas encore de compte, il sera automatiquement créé.
+        </div>
+        <v-form
+          ref="form"
+          v-model="valid"
+          lazy-validation
+        >
+          <v-text-field
+            v-model="email"
+            :rules="emailRules"
+            label="Adresse mail"
+            required
+          />
+
+          <v-text-field
+            v-model="password"
+            :rules="passwordRules"
+            label="Mot de passe"
+            required
+          />
+
+          <v-btn
+            :disabled="!valid"
+            color="success"
+            class="mr-4 mt-4"
+            @click="login"
           >
-            <v-text-field
-              v-model="email"
-              :rules="emailRules"
-              label="Adresse mail"
-              required
-            />
-
-            <v-text-field
-              v-model="password"
-              :rules="passwordRules"
-              label="Mot de passe"
-              required
-            />
-
-            <v-btn
-              :disabled="!valid"
-              color="success"
-              class="mr-4 mt-4"
-              @click="login"
-            >
-              Se connecter / s'enregistrer
-            </v-btn>
-            <v-alert
-              v-if="error"
-              class="mt-5 mb-0"
-              text
-              dense
-              border="left"
-              type="error"
-              icon="mdi-cloud-alert"
-            >
-              Oups, une erreur est survenue. {{ error }}
-            </v-alert>
-          </v-form>
-        </v-card-text>
-      </v-card>
+            Se connecter / s'enregistrer
+          </v-btn>
+          <v-alert
+            v-if="error"
+            class="mt-5 mb-0"
+            text
+            dense
+            border="left"
+            type="error"
+            icon="mdi-cloud-alert"
+          >
+            Oups, une erreur est survenue. {{ error }}
+          </v-alert>
+        </v-form>
+      </v-card-text>
     </v-card>
   </div>
 </template>

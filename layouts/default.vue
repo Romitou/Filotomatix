@@ -23,23 +23,29 @@
         nav
         dense
       >
-        <v-list-item link href="/">
+        <v-list-item link to="/" nuxt>
           <v-list-item-icon>
-            <v-icon>mdi-star</v-icon>
+            <v-icon>mdi-ticket</v-icon>
           </v-list-item-icon>
           <v-list-item-title>Attractions</v-list-item-title>
         </v-list-item>
-        <v-list-item v-if="this.$auth.loggedIn" link href="account">
+        <v-list-item v-if="this.$auth.loggedIn" to="account" link nuxt>
           <v-list-item-icon>
             <v-icon>mdi-account-box</v-icon>
           </v-list-item-icon>
           <v-list-item-title>Compte</v-list-item-title>
         </v-list-item>
-        <v-list-item v-else link href="login">
+        <v-list-item v-else to="login" link nuxt>
           <v-list-item-icon>
             <v-icon>mdi-exit-to-app</v-icon>
           </v-list-item-icon>
           <v-list-item-title>Se connecter</v-list-item-title>
+        </v-list-item>
+        <v-list-item v-if="this.$auth.loggedIn && this.$auth.user.admin" to="admin" link nuxt>
+          <v-list-item-icon>
+            <v-icon>mdi-cog</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Administration</v-list-item-title>
         </v-list-item>
         <v-divider class="ma-2" />
         <v-list-item link>
