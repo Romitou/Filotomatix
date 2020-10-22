@@ -26,7 +26,7 @@ function getRandomToken(): number {
 // [POST] /login
 router.post('/login', (req, res) => {
   const { email } = req.body;
-  if (!email) throw new Error('invalid mail');
+  if (!email) return res.status(400).json({ message: 'Veuillez saisir une adresse mail.' });
   const refreshToken = getRandomToken();
 
   const user = { email, admin: true };
