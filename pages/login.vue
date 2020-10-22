@@ -39,13 +39,13 @@
           <v-alert
             v-if="error"
             class="mt-5 mb-0"
-            text
-            dense
             border="left"
-            type="error"
-            icon="mdi-cloud-alert"
+            color="orange"
+            dense
+            outlined
+            type="warning"
           >
-            Oups, une erreur est survenue. {{ error }}
+            {{ error }}
           </v-alert>
         </v-form>
       </v-card-text>
@@ -79,7 +79,9 @@ export default {
           email: this.email,
           password: this.password
         }
-      }).catch(e => (this.error = e));
+      }).catch(e => (this.error =
+        e.response.data?.message ||
+        'Une erreur est survenue lors de l\'envoi des données.'));
       await this.$router.push('/account');
     }
   }

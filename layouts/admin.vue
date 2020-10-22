@@ -48,6 +48,7 @@
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <img src="https://www.parcasterix.fr/sites/default/files/imce/pa-logo-filotomatix-vertical_rvb_0.png" class="icon" alt="Icône Filotomatix">
       <v-toolbar-title v-text="title" />
     </v-app-bar>
     <v-main>

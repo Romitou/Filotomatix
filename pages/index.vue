@@ -4,6 +4,17 @@
     fluid
     class="ma-0 pa-0"
   >
+    <v-alert
+      v-if="error"
+      class="mt-5 mb-0"
+      border="left"
+      color="red"
+      dense
+      outlined
+      type="error"
+    >
+      Une erreur est survenue lors du chargement des données des attractions.
+    </v-alert>
     <v-row
       align="start"
     >
@@ -79,11 +90,10 @@
 
 <script>
 export default {
-  middleware: 'auth',
-  auth: false,
   data() {
     return {
       rides: [],
+      error: undefined,
       interval: undefined
     };
   },
@@ -95,9 +105,10 @@ export default {
     clearInterval(this.interval);
   },
   methods: {
-    refreshData() {
-      this.$axios.get('/api/rides')
-        .then(r => (this.rides = r.data));
+    async refreshData() {
+      await this.$axios.get('/api/rides')
+        .then(r => (this.rides = r.data))
+        .catch(() => (this.error = true));
     }
   }
 };
