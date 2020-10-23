@@ -74,6 +74,15 @@
         </tbody>
       </template>
     </v-simple-table>
+    <v-btn
+      class="mt-5"
+      color="primary"
+      outlined
+      to="admin/rides/new"
+      nuxt
+    >
+      Ajouter une attraction
+    </v-btn>
   </v-container>
 </template>
 
