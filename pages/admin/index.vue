@@ -77,11 +77,16 @@
     <v-btn
       class="mt-5"
       color="primary"
-      outlined
       to="admin/rides/new"
       nuxt
     >
       Ajouter une attraction
+      <v-icon
+        right
+        dark
+      >
+        mdi-plus
+      </v-icon>
     </v-btn>
   </v-container>
 </template>

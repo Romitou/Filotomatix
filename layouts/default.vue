@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="background">
     <v-navigation-drawer
       v-model="drawer"
       absolute
