@@ -25,7 +25,7 @@
         <v-card
           hover
           height="250"
-          min-width="130"
+          min-width="250"
         >
           <v-img
             :src="ride.image"
@@ -34,7 +34,7 @@
             height="150"
           />
 
-          <v-card-subtitle class="text-truncate">
+          <v-card-subtitle>
             <div class="blue-grey--text subtitle-2">
               {{ ride.name }}
             </div>
