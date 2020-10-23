@@ -12,7 +12,7 @@ router.use((req, res, next) => {
   Object.setPrototypeOf(req, router.request);
   Object.setPrototypeOf(res, router.response);
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   req.res = res;
   res.req = req;
   next();
