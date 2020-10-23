@@ -1,18 +1,7 @@
 import express from 'express';
 import jsonwebtoken from 'jsonwebtoken';
-import jwt from 'express-jwt';
 
 const router = express();
-
-router.use(
-  jwt({
-    // @ts-ignore - Environmental variables cannot be undefined.
-    secret: process.env.JWT_SECRET,
-    algorithms: ['HS256']
-  }).unless({
-    path: ['/api/auth/login', '/api/auth/refresh']
-  })
-);
 
 const refreshTokens: Array<any> = [];
 // @ts-ignore - Environmental variables cannot be undefined.
@@ -21,6 +10,15 @@ const expiresIn = 60 * 60 * 24 * 30; // 30 days
 
 function getRandomToken(): number {
   return Math.floor(Math.random() * (1000000000000000 - 1 + 1)) + 1;
+}
+
+export function verifyJwtToken(token: string | undefined) {
+  try {
+    jsonwebtoken.verify((token || '').slice(7), privateKey);
+  } catch (e) {
+    return false;
+  }
+  return true;
 }
 
 // [POST] /login
