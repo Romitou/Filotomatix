@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import jwt from 'express-jwt';
 import rides from './rides';
 import auth from './auth';
+import admin from './admin';
 import unauthorizedError from './middlewares/unauthorizedError';
 import headers from './middlewares/headers';
 
@@ -28,6 +29,7 @@ router.use(unauthorizedError);
 
 router.use('/rides', rides);
 router.use('/auth', auth);
+router.use('/admin', admin);
 
 export default {
   path: '/api',

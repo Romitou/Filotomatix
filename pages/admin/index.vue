@@ -57,18 +57,6 @@
               >
                 <v-icon>mdi-circle-edit-outline</v-icon>
               </v-btn>
-              <v-btn
-                icon
-                color="green"
-              >
-                <v-icon>mdi-check-circle-outline</v-icon>
-              </v-btn>
-              <v-btn
-                icon
-                color="red"
-              >
-                <v-icon>mdi-clock-alert-outline</v-icon>
-              </v-btn>
             </td>
           </tr>
         </tbody>
@@ -94,6 +82,8 @@
 <script>
 export default {
   layout: 'admin',
+  middleware: ['auth', 'admin'],
+  auth: true,
   async asyncData({ $axios }) {
     const req = await $axios.get('/api/rides');
     return { rides: req.data };
