@@ -18,9 +18,13 @@
     "@nuxtjs/auth-next": "^5.0.0-1602966760.822bc05",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/pwa": "^3.0.2",
+    "@types/bcrypt": "^3.0.0",
     "@types/express-jwt": "^0.0.42",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/mongoose": "^5.7.36",
+    "@types/socket.io": "^2.1.11",
+    "@types/uuid": "^8.3.0",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "core-js": "^3.6.5",
     "dotenv": "^8.2.0",
@@ -29,6 +33,9 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.10",
     "nuxt": "^2.14.6",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.1",
+    "uuid": "^8.3.1",
     "vuetify": "^2.3.15"
   },
   "devDependencies": {
