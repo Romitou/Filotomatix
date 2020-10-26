@@ -89,27 +89,30 @@
 </template>
 
 <script>
+import io from 'socket.io-client';
+
 export default {
+  async asyncData ({ $axios }) {
+    const req = await $axios.get('/api/rides').catch(() => {});
+    return { rides: req?.data || { error: 'Aucune attraction n\'a été trouvée.' } };
+  },
   data() {
     return {
       rides: [],
       error: undefined,
-      interval: undefined
+      interval: undefined,
+      socket: undefined
     };
   },
-  mounted() {
-    this.refreshData();
-    this.interval = setInterval(this.refreshData, 10000);
-  },
-  beforeDestroy() {
-    clearInterval(this.interval);
-  },
-  methods: {
-    async refreshData() {
-      await this.$axios.get('/api/rides')
-        .then(r => (this.rides = r.data))
-        .catch(() => (this.error = true));
-    }
+  created() {
+    this.socket = io();
+    this.socket.on('connect', () => {
+      console.log('Socket connected to server.');
+    });
+    this.socket.on('ride-update', (data) => {
+      const item = this.rides.find(ride => ride._id === data._id);
+      Object.assign(item, data);
+    });
   }
 };
 </script>

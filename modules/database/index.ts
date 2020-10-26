@@ -1,4 +1,4 @@
-import MongoClient from './database/MongoClient';
+import MongoClient from './MongoClient';
 
 export default function() {
   // @ts-ignore
