@@ -29,7 +29,8 @@
           />
 
           <v-btn
-            :disabled="!valid"
+            :disabled="!valid || loader"
+            :loading="loader"
             color="success"
             class="mr-4 mt-4"
             @click="login"
@@ -59,6 +60,8 @@ export default {
   data() {
     return {
       error: undefined,
+      loader: undefined,
+      loading: false,
       valid: true,
       email: '',
       emailRules: [
@@ -74,14 +77,18 @@ export default {
   },
   methods: {
     async login() {
+      this.loader = 'loading';
       await this.$auth.loginWith('local', {
         data: {
           email: this.email,
           password: this.password
         }
-      }).catch(e => (this.error =
-        e.response.data?.message ||
-        'Une erreur est survenue lors de l\'envoi des données.'));
+      }).catch((e) => {
+        this.error =
+          e.response.data?.message ||
+          'Une erreur est survenue lors de l\'envoi des données.';
+        this.loader = undefined;
+      });
       await this.$router.push('/account');
     }
   }
