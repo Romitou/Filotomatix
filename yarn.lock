@@ -1167,18 +1167,18 @@
     html-minifier "^4.0.0"
     node-html-parser "^2.0.0"
 
-"@nuxt/http@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@nuxt/http/-/http-0.6.0.tgz#7f6f7592cfd95f57fc9f992314efd118f7f115f1"
-  integrity sha512-p564xyaGW57YQ7Xj3DYnWvOus/HCD8rcvFQMpCUqzcIIIM6fFF6crgMwSpPlpqrxglJA6+PvXv8hnG41k3DSVQ==
+"@nuxt/http@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@nuxt/http/-/http-0.6.1.tgz#a8ba036ada413d2078fa7dc0e3ef4b29f7a3c0d1"
+  integrity sha512-dS3/97AXWn1qH0uZ6RvrK2rkePFoI+gBkl/rG/xK6ulrlS2OzEMMI1lQLRlCvFRLQJ89J6iTb/Vh8aZtvbvZuw==
   dependencies:
     "@nuxtjs/proxy" "^2.0.1"
     abort-controller "^3.0.0"
     consola "^2.15.0"
-    destr "^1.0.0"
-    ky "^0.24.0"
+    destr "^1.0.1"
+    ky "^0.25.0"
     node-fetch "^2.6.1"
-    web-streams-polyfill "^3.0.0"
+    web-streams-polyfill "^3.0.1"
 
 "@nuxt/loading-screen@^2.0.3":
   version "2.0.3"
@@ -4024,12 +4024,7 @@ des.js@^1.0.0:
     inherits "^2.0.1"
     minimalistic-assert "^1.0.0"
 
-destr@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/destr/-/destr-1.0.0.tgz#c445ef0baaf3e51a6d08551d453d6f73fbda2dc6"
-  integrity sha512-uw0zD4688l00hDftUP76EWyweDtOB/0mVd/8GvmwecYD+Akw5Z4v43pw4onVsz4rC/BsfnZnDMG2rdTGhVIODA==
-
-destr@^1.0.1:
+destr@^1.0.0, destr@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/destr/-/destr-1.0.1.tgz#d13db7f9d9c9ca4fcf24e86343d601217136ddc3"
   integrity sha512-LnEdINrd1ydSqRiAGjMBVrG/G8hNruwE+fEKlkJA14MGPEoI9T7zJDwGpkMTyXT2ASE0ycnN2SYn4k6Q7j7lHg==
@@ -6411,10 +6406,10 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
 
-ky@^0.24.0:
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/ky/-/ky-0.24.0.tgz#337e534a7f47c12476988eef3cb968daef318349"
-  integrity sha512-/vpuQguwV30jErrqLpoaU/YJAFALrUkqqWLILnSoBOj5/O/LKzro/pPNtxbLgY6m4w5XNM6YZ3v7/or8qLlFuw==
+ky@^0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/ky/-/ky-0.25.0.tgz#a0f377cb2eac05f7e8f7c9c7796f2d991656a917"
+  integrity sha512-K1Rdvz2z9ihm9iasWK3iywtrOqIFdJJ09nR6PaQ5cO7NA6MIS7RhzGn9qd206FvWf5yJIZmy0Vzaz70lhU+8ow==
 
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
@@ -10849,10 +10844,10 @@ web-namespaces@^1.0.0:
   resolved "https://registry.yarnpkg.com/web-namespaces/-/web-namespaces-1.1.4.tgz#bc98a3de60dadd7faefc403d1076d529f5e030ec"
   integrity sha512-wYxSGajtmoP4WxfejAPIr4l0fVh+jeMXZb08wNc0tMg6xsfZXj3cECqIK0G7ZAqUq0PP8WlMDtaOGVBTAWztNw==
 
-web-streams-polyfill@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.0.0.tgz#c8bcb1e2ec1820088ca201674486a0f1feae848b"
-  integrity sha512-tcZlIJ+VBxuDXdRFF3PCZTJ3yUISGklG4hkl3CDGOlZ8XwpN90L5YsJNoSPH72wZ4nbsatE/OfIaxfM3p+6W7w==
+web-streams-polyfill@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.0.1.tgz#1f836eea307e8f4af15758ee473c7af755eb879e"
+  integrity sha512-M+EmTdszMWINywOZaqpZ6VIEDUmNpRaTOuizF0ZKPjSDC8paMRe/jBBwFv0Yeyn5WYnM5pMqMQa82vpaE+IJRw==
 
 webpack-bundle-analyzer@^3.9.0:
   version "3.9.0"
