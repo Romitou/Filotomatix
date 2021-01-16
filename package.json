@@ -18,7 +18,7 @@
     "@nuxt/content": "^1.11.1",
     "@nuxt/http": "^0.6.2",
     "@nuxt/typescript-runtime": "^2.0.0",
-    "@nuxtjs/auth-next": "^5.0.0-1610716891.541d68d",
+    "@nuxtjs/auth-next": "^5.0.0-1610807508.f2f08fe",
     "@nuxtjs/axios": "^5.12.5",
     "@nuxtjs/pwa": "^3.3.3",
     "@types/bcrypt": "^3.0.0",
