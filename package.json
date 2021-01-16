@@ -36,7 +36,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.11",
     "nuxt": "^2.14.12",
-    "socket.io": "^3.0.5",
+    "socket.io": "^3.1.0",
     "socket.io-client": "^3.1.0",
     "uuid": "^8.3.2",
     "vuetify": "^2.4.2"
