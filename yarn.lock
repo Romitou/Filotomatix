@@ -1321,10 +1321,10 @@
     webpack-node-externals "^2.5.2"
     webpackbar "^4.0.0"
 
-"@nuxtjs/auth-next@^5.0.0-1610716891.541d68d":
-  version "5.0.0-1610716891.541d68d"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/auth-next/-/auth-next-5.0.0-1610716891.541d68d.tgz#db11336bea7f3951a7460e1dac62140c824e57f6"
-  integrity sha512-6wuhYKFfP5ba4g0EgMmYBhObfF5YLBHLPXKIA+96hfrayiCkdW/OUZnZFINRScdCBfSqaUkAdnvZlPEG5+4enA==
+"@nuxtjs/auth-next@^5.0.0-1610809099.bcf293f":
+  version "5.0.0-1610809099.bcf293f"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/auth-next/-/auth-next-5.0.0-1610809099.bcf293f.tgz#1e9298da323d0c8b3f44e6eec2d52b0119ed8bf7"
+  integrity sha512-KTde2elmTC8JIiHWbk9/0ToB8p0z9q4i3gb/og8MCGW0RNk3lKk4fMU6UMbJtD8ZuEUsuS1bjWHwYRNwKwgXVg==
   dependencies:
     "@nuxtjs/axios" "^5.12.5"
     axios "^0.21.1"
@@ -10207,11 +10207,6 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
-
-typescript@~4.0:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.0.5.tgz#ae9dddfd1069f1cb5beb3ef3b2170dd7c1332389"
-  integrity sha512-ywmr/VrTVCmNTJ6iV2LwIrfG1P+lv6luD8sUJs+2eI9NLGigaN+nUQc13iHqisq7bra9lnmUSYqbJvegraBOPQ==
 
 typescript@~4.1:
   version "4.1.3"
