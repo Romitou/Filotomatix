@@ -20,7 +20,7 @@
     "@nuxt/typescript-runtime": "^2.0.1",
     "@nuxtjs/auth-next": "^5.0.0-1611574754.9020f2a",
     "@nuxtjs/axios": "^5.12.5",
-    "@nuxtjs/pwa": "^3.3.3",
+    "@nuxtjs/pwa": "^3.3.5",
     "@types/bcrypt": "^3.0.0",
     "@types/express-jwt": "^6.0.0",
     "@types/jsonwebtoken": "^8.5.0",
