@@ -107,6 +107,10 @@ export default {
 
   serverMiddleware: [
     '~/modules/api'
-  ]
+  ],
+
+  server: {
+    port: process.env.APP_PORT || 3000
+  }
 
 };
