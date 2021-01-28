@@ -17,6 +17,7 @@
     </v-alert>
     <v-row
       align="start"
+      class="mt-5"
     >
       <v-col
         v-for="ride in rides"
