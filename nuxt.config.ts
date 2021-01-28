@@ -51,6 +51,12 @@ export default {
     baseUrl: process.env.API_URL || '/'
   },
 
+  publicRuntimeConfig: {
+    axios: {
+      browserBaseURL: process.env.API_URL || '/'
+    }
+  },
+
   // Auth module configuration
   auth: {
     strategies: {
