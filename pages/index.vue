@@ -5,12 +5,11 @@
     class="ma-0 pa-0"
   >
     <v-alert
-      v-if="error"
+      v-if="rides.error"
       class="mt-5 mb-0"
       border="left"
       color="red"
       dense
-      outlined
       type="error"
     >
       Une erreur est survenue lors du chargement des données des attractions.
@@ -27,6 +26,9 @@
           hover
           height="250"
           min-width="250"
+          link
+          nuxt
+          :to="`/ride/${ride._id}`"
         >
           <v-img
             :src="ride.image"
