@@ -1374,10 +1374,10 @@
     node-html-parser "^2.2.1"
     ufo "^0.6.7"
 
-"@nuxt/http@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@nuxt/http/-/http-0.6.2.tgz#194002fcf037f69b1572a6439f449839154e4b6a"
-  integrity sha512-XD1w1W92iKqA5Jo7pT3AgoLsWIUy4k3Ae7zyi+sgmFLReISjvr8neXbWiwxRm0yolsAg/WM++gDKFfGTh2LH8g==
+"@nuxt/http@^0.6.3":
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/@nuxt/http/-/http-0.6.3.tgz#2352b6e3db98205d8c15f21cc21f0719e97a3aa9"
+  integrity sha512-xQqCdK4miYml5mIYqqt+AGYieotKUrzU3TSL+jw2ptIhakfa2UEH17MAS6J8lH2V1XypCfcNtzRGmLjx40z1bA==
   dependencies:
     "@nuxtjs/proxy" "^2.1.0"
     abort-controller "^3.0.0"
@@ -4239,12 +4239,7 @@ des.js@^1.0.0:
     inherits "^2.0.1"
     minimalistic-assert "^1.0.0"
 
-destr@^1.0.0, destr@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/destr/-/destr-1.0.1.tgz#d13db7f9d9c9ca4fcf24e86343d601217136ddc3"
-  integrity sha512-LnEdINrd1ydSqRiAGjMBVrG/G8hNruwE+fEKlkJA14MGPEoI9T7zJDwGpkMTyXT2ASE0ycnN2SYn4k6Q7j7lHg==
-
-destr@^1.1.0:
+destr@^1.0.0, destr@^1.0.1, destr@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/destr/-/destr-1.1.0.tgz#2da6add6ba71e04fd0abfb1e642d4f6763235095"
   integrity sha512-Ev/sqS5AzzDwlpor/5wFCDu0dYMQu/0x2D6XfAsQ0E7uQmamIgYJ6Dppo2T2EOFVkeVYWjc+PCLKaqZZ57qmLg==
