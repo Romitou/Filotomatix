@@ -29,8 +29,8 @@
           />
 
           <v-btn
-            :disabled="!valid || loader"
-            :loading="loader"
+            :disabled="!valid || loading"
+            :loading="loading"
             color="success"
             class="mr-4 mt-4"
             @click="login"
@@ -60,7 +60,6 @@ export default {
   data() {
     return {
       error: undefined,
-      loader: undefined,
       loading: false,
       valid: true,
       email: '',
@@ -77,7 +76,7 @@ export default {
   },
   methods: {
     async login() {
-      this.loader = 'loading';
+      this.loading = true;
       await this.$auth.loginWith('local', {
         data: {
           email: this.email,
@@ -87,7 +86,7 @@ export default {
         this.error =
           e.response.data?.message ||
           'Une erreur est survenue lors de l\'envoi des données.';
-        this.loader = undefined;
+        this.loading = false;
       });
       await this.$router.push('/account');
     }

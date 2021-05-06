@@ -93,10 +93,6 @@
 
 <script>
 export default {
-  async asyncData ({ $axios }) {
-    const req = await $axios.$get('/api/rides').catch(() => {});
-    return { rides: req || { error: 'Aucune attraction n\'a été trouvée.' } };
-  },
   data() {
     return {
       rides: [],
@@ -106,7 +102,11 @@ export default {
     };
   },
   created() {
-    setInterval(this.fetchRides, 10000);
+    this.fetchRides();
+    this.interval = setInterval(this.fetchRides, 10000);
+  },
+  beforeDestroy() {
+    clearInterval(this.interval);
   },
   methods: {
     async fetchRides() {
