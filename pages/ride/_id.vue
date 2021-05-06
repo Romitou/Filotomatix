@@ -18,8 +18,6 @@
 </template>
 
 <script>
-import io from 'socket.io-client';
-
 export default {
   async asyncData ({ route, $axios }) {
     const req = await $axios.get(`/api/rides/${route.params.id}`).catch(() => {});
@@ -32,14 +30,6 @@ export default {
     };
   },
   created() {
-    this.socket = io();
-    this.socket.on('connect', () => {
-      console.log('Socket connected to server.');
-    });
-    this.socket.on('ride-update', (data) => {
-      if (data._id === this.ride?._id)
-        Object.assign(this.ride, data);
-    });
   }
 };
 </script>

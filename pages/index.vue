@@ -92,12 +92,10 @@
 </template>
 
 <script>
-import io from 'socket.io-client';
-
 export default {
   async asyncData ({ $axios }) {
-    const req = await $axios.get('/api/rides').catch(() => {});
-    return { rides: req?.data || { error: 'Aucune attraction n\'a été trouvée.' } };
+    const req = await $axios.$get('/api/rides').catch(() => {});
+    return { rides: req || { error: 'Aucune attraction n\'a été trouvée.' } };
   },
   data() {
     return {
@@ -108,14 +106,34 @@ export default {
     };
   },
   created() {
-    this.socket = io();
-    this.socket.on('connect', () => {
-      console.log('Socket connected to server.');
-    });
-    this.socket.on('ride-update', (data) => {
-      const item = this.rides.find(ride => ride._id === data._id);
-      Object.assign(item, data);
-    });
+    setInterval(this.fetchRides, 10000);
+  },
+  methods: {
+    async fetchRides() {
+      this.rides = await this.$axios.$get('/api/rides').catch(() => {});
+    }
   }
 };
 </script>
+
+<style>
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4px;
+}
+
+.v2-card {
+  padding-bottom: 56.25%;
+  display: block;
+  border: inherit;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background-repeat: no-repeat;
+  background-origin: padding-box;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+</style>

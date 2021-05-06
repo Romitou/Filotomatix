@@ -20,7 +20,7 @@ router.use(jwt({
   path: [
     '/api/auth/login',
     '/api/auth/refresh',
-    new RegExp('api\\/(?!auth|admin)')
+    /api\/(?!auth|admin)/
   ]
 }));
 
