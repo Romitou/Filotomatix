@@ -4,7 +4,7 @@ import type { FastifyInstance } from 'fastify';
 import fastifyCors from 'fastify-cors';
 import fastifyJWT from 'fastify-jwt';
 import mongoose from 'mongoose';
-import { config } from './config';
+import { config, loadConfig } from './config';
 import authenticate from './decorations/authenticate';
 import auth from './routers/auth';
 import rides from './routers/rides';
@@ -13,6 +13,7 @@ const server: FastifyInstance = fastify({ logger: true });
 server.decorate('authenticate', authenticate);
 
 async function start(): Promise<void> {
+    loadConfig();
     await mongoose.connect(config.MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
