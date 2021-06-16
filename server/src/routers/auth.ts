@@ -31,7 +31,10 @@ export default function auth(fastify: FastifyInstance, _options: FastifyPluginOp
         return reply.send({ accessToken });
     }));
 
-    fastify.get('/self', (async (req: FastifyRequest, reply: FastifyReply) => reply.send({ user: req.user })));
+    fastify.get('/self', {
+        // @ts-expect-error 123456
+        preValidation: [fastify.authenticate],
+    }, (async (req: FastifyRequest, reply: FastifyReply) => reply.send({ user: req.user })));
     fastify.get('/logout', (async (req: FastifyRequest, reply: FastifyReply) => reply.send({ status: 'OK' })));
 
     return fastify;
