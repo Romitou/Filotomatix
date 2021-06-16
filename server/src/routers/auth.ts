@@ -3,10 +3,9 @@ import type {
  FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyRequest,
 } from 'fastify';
 import jsonwebtoken from 'jsonwebtoken';
+import { config } from '../config';
 import User from '../models/user';
 import type { LoginRequest } from '../typings/routers';
-
-const expiresIn = 60 * 60 * 24 * 30; // 30 days
 
 export default function auth(fastify: FastifyInstance, _options: FastifyPluginOptions): FastifyInstance {
     // @ts-expect-error 123456
@@ -28,7 +27,7 @@ export default function auth(fastify: FastifyInstance, _options: FastifyPluginOp
         }
 
         const user = { email, isAdmin: existingUser?.admin };
-        const accessToken = jsonwebtoken.sign(user, 'privateKey', { expiresIn });
+        const accessToken = jsonwebtoken.sign(user, config.JWT_SECRET, { expiresIn: config.JWT_EXPIRATION });
         return reply.send({ accessToken });
     }));
 
