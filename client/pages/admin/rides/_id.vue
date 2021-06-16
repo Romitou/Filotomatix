@@ -23,7 +23,7 @@ export default {
   middleware: ['auth'],
   auth: true,
   async asyncData({ route, $axios }) {
-    const req = await $axios.get(`/api/rides/${route.params.id}`).catch(() => {});
+    const req = await $axios.get(`/rides/${route.params.id}`).catch(() => {});
     return { ride: req?.data || { error: 'Cette attraction n\'est pas enregistrée dans la base de donnée.' } };
   },
   data() {

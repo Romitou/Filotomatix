@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     async fetchRide() {
-      this.ride = await this.$axios.$get(`/api/rides/${this.$route.params.id}`).catch(() => {});
+      this.ride = await this.$axios.$get(`/rides/${this.$route.params.id}`).catch(() => {});
     }
   }
 };

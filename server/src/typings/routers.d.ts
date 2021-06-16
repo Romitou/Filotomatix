@@ -6,3 +6,9 @@ export interface LoginRequest extends FastifyRequest {
         password: string;
     };
 }
+
+export interface RideRequest extends FastifyRequest {
+    params: {
+        id: string;
+    };
+}

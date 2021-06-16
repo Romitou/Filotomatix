@@ -85,7 +85,7 @@ export default {
   middleware: ['auth'],
   auth: true,
   async asyncData({ $axios }) {
-    const req = await $axios.get('/api/rides');
+    const req = await $axios.get('/rides');
     return { rides: req.data };
   },
   data() {

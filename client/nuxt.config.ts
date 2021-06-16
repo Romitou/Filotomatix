@@ -62,9 +62,9 @@ export default {
           property: 'user'
         },
         endpoints: {
-          login: { url: '/api/auth/login', method: 'post' },
-          user: { url: '/api/auth/self', method: 'get' },
-          logout: { url: '/api/auth/logout', method: 'post' }
+          login: { url: '/auth/login', method: 'post' },
+          user: { url: '/auth/self', method: 'get' },
+          logout: { url: '/auth/logout', method: 'post' }
         },
         redirect: {
           home: '/',

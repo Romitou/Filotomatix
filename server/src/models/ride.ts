@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import { model, Schema } from 'mongoose';
+import type { RideDocument } from '../typings/models';
 
-export default mongoose.model('Ride',
-  new mongoose.Schema({
+const rideSchema = new Schema<RideDocument>({
     name: String,
     status: String,
     image: String,
@@ -15,4 +15,6 @@ export default mongoose.model('Ride',
     waitTimeMins: Number,
     openingTime: Date,
     closingTime: Date,
-  }));
+});
+
+export default model<RideDocument>('Ride', rideSchema);

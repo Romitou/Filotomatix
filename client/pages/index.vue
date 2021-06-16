@@ -107,7 +107,7 @@ export default {
   },
   methods: {
     async fetchRides() {
-      this.rides = await this.$axios.$get('/api/rides').catch(() => {});
+      this.rides = await this.$axios.$get('/rides').catch(() => {});
     }
   }
 };
