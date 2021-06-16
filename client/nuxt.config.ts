@@ -52,7 +52,7 @@ export default {
   auth: {
     strategies: {
       local: {
-        scheme: 'refresh',
+        scheme: 'local',
         token: {
           property: 'accessToken',
           maxAge: 60 * 60 * 24 * 30, // 30 days

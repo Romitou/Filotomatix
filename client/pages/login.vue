@@ -91,7 +91,7 @@ export default {
           'Une erreur est survenue lors de l\'envoi des données.';
         this.loading = false;
       });
-      await this.$router.push('/account');
+      this.$router.push('/account');
     }
   }
 };
