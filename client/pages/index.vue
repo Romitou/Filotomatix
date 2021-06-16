@@ -1,6 +1,5 @@
 <template>
   <v-container
-    fill-height
     fluid
   >
     <v-alert
