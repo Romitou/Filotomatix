@@ -17,7 +17,7 @@ export default function rides(fastify: FastifyInstance, _options: FastifyPluginO
     // @ts-expect-error 123456
     fastify.get('/:id', async (req: RideRequest, reply: FastifyReply) => {
         // @ts-expect-error 123456
-        const ride: RideDocument = await Ride.find({ _id: req.params.id });
+        const ride: RideDocument = await Ride.findOne({ _id: req.params.id });
         if (!ride)
             return reply.code(404).send({ message: 'Aucune attraction trouvée via cet identifiant.' });
         ride.waitTimeMins = waitingTime(ride);
