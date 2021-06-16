@@ -11,7 +11,7 @@ export default function rides(fastify: FastifyInstance, _options: FastifyPluginO
         const allRides: RideDocument[] = await Ride.find({});
         for (const ride of allRides)
             ride.waitTimeMins = waitingTime(ride);
-        return reply.send({ rides: allRides });
+        return reply.send(allRides);
     });
 
     // @ts-expect-error 123456
