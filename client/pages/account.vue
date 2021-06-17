@@ -5,11 +5,13 @@
       <div>
         Vous pouvez utiliser ce code QR pour vous identifier auprès du service clientèle.
       </div>
-      <img v-if="qrCode" :src="qrCode" alt="Account QR code">
+      <div class="text-center">
+        <img v-if="qrCode" :src="qrCode" height="200" alt="Account QR code">
+      </div>
       <v-btn
         block
         color="blue-grey"
-        class="white--text mt-4"
+        class="white--text"
         @click="logout"
       >
         Déconnexion
@@ -34,7 +36,7 @@ export default {
   methods: {
     async logout() {
       await this.$auth.logout();
-      await this.$router.push('/');
+      await this.$router.push('/login');
     },
     async fetchQrCode() {
       const qrResponse = await this.$axios.$get('/auth/qrcode');

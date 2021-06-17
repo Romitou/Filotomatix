@@ -1,60 +1,62 @@
 <template>
-  <v-container>
-    <div class="mt-3">
-      <v-card
-        class="mx-auto d-flex justify-center mb-6"
-        width="600"
-        rounded
+  <div>
+    <InfoBar :info="null" />
+    <v-container>
+      <div class="body-2">
+        Veuillez saisir une adresse électronique et un mot de passe pour vous connecter.
+        Si vous n’avez pas encore de compte, un compte sera créé en votre nom.
+      </div>
+      <v-form
+        ref="form"
+        v-model="valid"
+        class="my-4"
       >
-        <v-card-text class="text--primary">
-          <div>
-            Veuillez saisir une adresse mail ainsi qu'un mot de passe pour vous connecter. Si vous n'avez pas encore de compte, il sera automatiquement créé.
-          </div>
-          <v-form
-            ref="form"
-            v-model="valid"
-            lazy-validation
-          >
-            <v-text-field
-              v-model="email"
-              :rules="emailRules"
-              label="Adresse mail"
-              required
-            />
+        <v-text-field
+          v-model="email"
+          :rules="emailRules"
+          label="Adresse mail"
+          outlined
+          dense
+          required
+        />
 
-            <v-text-field
-              type="password"
-              v-model="password"
-              :rules="passwordRules"
-              label="Mot de passe"
-              required
-            />
+        <v-text-field
+          v-model="password"
+          type="password"
+          :rules="passwordRules"
+          label="Mot de passe"
+          outlined
+          dense
+          required
+        />
 
-            <v-btn
-              :disabled="!valid || loading"
-              :loading="loading"
-              color="success"
-              class="mr-4 mt-4"
-              @click="login"
-            >
-              Se connecter / s'enregistrer
-            </v-btn>
-            <v-alert
-              v-if="error"
-              class="mt-5 mb-0"
-              border="left"
-              color="orange"
-              dense
-              outlined
-              type="warning"
-            >
-              {{ error }}
-            </v-alert>
-          </v-form>
-        </v-card-text>
-      </v-card>
-    </div>
-  </v-container>
+        <div class="body-2 mb-4">
+          En vous enregistrant ou en vous connectant, vous acceptez les Conditions d’utilisation Filotomatix. Vos données sont utilisées uniquement pour les besoins de l’accès et du fonctionnement de Filotomatix.
+        </div>
+
+        <v-alert
+          v-if="error"
+          border="left"
+          color="red"
+          class="body-2"
+          dense
+          text
+        >
+          {{ error }}
+        </v-alert>
+
+        <v-btn
+          :disabled="!valid || loading"
+          :loading="loading"
+          color="success"
+          @click="login"
+          block
+        >
+          Se connecter / s'enregistrer
+        </v-btn>
+      </v-form>
+    </v-container>
+  </div>
 </template>
 
 <script>
@@ -65,12 +67,12 @@ export default {
       error: undefined,
       loading: false,
       valid: true,
-      email: '',
+      email: null,
       emailRules: [
         v => !!v || 'Veuillez saisir votre adresse mail.',
         v => /.+@.+\..+/.test(v) || 'Veuillez saisir une adresse mail valide.'
       ],
-      password: '',
+      password: null,
       passwordRules: [
         v => !!v || 'Veuillez saisir votre mot de passe.',
         v => (v && v.length >= 6) || 'Veuillez saisir un mot de passe de plus de 6 caractères.'
@@ -91,7 +93,8 @@ export default {
           'Une erreur est survenue lors de l\'envoi des données.';
         this.loading = false;
       });
-      this.$router.push('/account');
+      if (this.$auth.loggedIn)
+        await this.$router.push('/account');
     }
   }
 };
