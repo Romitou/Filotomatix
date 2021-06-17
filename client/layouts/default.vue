@@ -7,7 +7,6 @@
     >
       <v-img
         src="https://cache.filevirtuelle.parcasterix.fr/images/pages/nav.jpg"
-        aspect-ratio="16:9"
         height="150"
       >
         <v-row class="fill-height pa-2" align="end" justify="center">

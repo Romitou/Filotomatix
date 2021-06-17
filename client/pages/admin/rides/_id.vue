@@ -1,19 +1,5 @@
 <template>
-  <v-container fluid>
-    <v-alert
-      v-if="ride.error"
-      class="mt-5 mb-0"
-      border="left"
-      color="red"
-      dense
-      outlined
-      type="error"
-    >
-      {{ ride.error }}
-    </v-alert>
-    <div v-else>
-      {{ ride.name }}
-    </div>
+  <v-container>
   </v-container>
 </template>
 

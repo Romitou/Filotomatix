@@ -11,8 +11,11 @@
         height="150"
       >
         <v-row class="fill-height pa-2" align="end" justify="center">
-          <v-chip>
-            {{ this.$auth.user.email }}
+          <v-chip v-if="$auth.loggedIn">
+            {{ $auth.user.email }}
+          </v-chip>
+          <v-chip v-else>
+            Invité
           </v-chip>
         </v-row>
       </v-img>
@@ -20,7 +23,13 @@
         nav
         dense
       >
-        <v-list-item link to="/admin" nuxt>
+        <v-list-item link to="/admin/" nuxt>
+          <v-list-item-icon>
+            <v-icon>mdi-home</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Accueil</v-list-item-title>
+        </v-list-item>
+        <v-list-item link to="/admin/rides" nuxt>
           <v-list-item-icon>
             <v-icon>mdi-ticket</v-icon>
           </v-list-item-icon>
@@ -46,14 +55,17 @@
       clipped-left
       fixed
       app
+      color="#134483"
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon class="white--text" @click.stop="drawer = !drawer" />
       <img
         src="~/assets/filotomatix.png"
-        class="icon"
+        class="icon pa-1 mr-1"
         alt="Icône Filotomatix"
       >
-      <v-toolbar-title>Filotomatix</v-toolbar-title>
+      <v-toolbar-title class="white--text">
+        Filotomatix
+      </v-toolbar-title>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -69,6 +81,10 @@ export default {
     return {
       drawer: false
     };
+  },
+  beforeCreate() {
+    if (!this.$auth.loggedIn)
+      this.$router.push('/login');
   }
 };
 </script>

@@ -5,7 +5,8 @@ import type {
 import jsonwebtoken from 'jsonwebtoken';
 import { config } from '../config';
 import User from '../models/user';
-import type { LoginRequest } from '../typings/routers';
+import type { FilotomatixRequest, LoginRequest } from '../typings/routers';
+import QRCode from 'qrcode';
 
 export default function auth(fastify: FastifyInstance, _options: FastifyPluginOptions): FastifyInstance {
     // @ts-expect-error 123456
@@ -35,6 +36,16 @@ export default function auth(fastify: FastifyInstance, _options: FastifyPluginOp
         // @ts-expect-error 123456
         preValidation: [fastify.authenticate],
     }, (async (req: FastifyRequest, reply: FastifyReply) => reply.send({ user: req.user })));
+
+    fastify.get('/qrcode', {
+        // @ts-expect-error 123456
+        preValidation: [fastify.authenticate],
+        // @ts-expect-error 123456
+    }, async (req: FilotomatixRequest, reply: FastifyReply) => {
+        const qrCode = await QRCode.toBuffer(req.user.email);
+        return reply.type('image/png').send(qrCode);
+    });
+
     fastify.get('/logout', (async (req: FastifyRequest, reply: FastifyReply) => reply.send({ status: 'OK' })));
 
     return fastify;

@@ -1,16 +1,14 @@
 <template>
   <div>
-    <div class="pa-3" style="background-color: #e9ecef;">
-      Filotomatix est fermé.
-    </div>
+    <InfoBar :info="null" />
     <v-container fluid>
-      <v-card class="mb-3">
+      <v-card class="mb-3" style="background-color: #134483;">
         <v-img
           src="/banner.png"
           height="100"
         />
-        <v-card-subtitle style="background-color: #134483; color: white;" class="pa-2">
-          <div class="subtitle-2">
+        <v-card-subtitle class="pa-2">
+          <div class="subtitle-2 white--text">
             Cliquez ici pour découvrir les offres
           </div>
           <div style="color: #dee2e6">
@@ -109,6 +107,7 @@
             {{ selectedRide.name }}
           </v-toolbar-title>
         </v-toolbar>
+        <InfoBar :info="null" />
         <RideModal v-if="selectedRide" :ride="selectedRide" />
       </v-card>
     </v-dialog>
