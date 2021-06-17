@@ -33,8 +33,7 @@
           <v-card
             hover
             link
-            nuxt
-            :to="`/ride/${ride._id}`"
+            @click="showModal(ride)"
           >
             <v-img
               :src="ride.image"
@@ -61,8 +60,8 @@
                   </div>
                 </div>
                 <div v-else-if="ride.status === 'full'">
-                  <div class="red--text">
-                    <v-icon small color="red">
+                  <div class="orange--text">
+                    <v-icon small color="orange">
                       mdi-account-cancel
                     </v-icon> Complet
                   </div>
@@ -81,7 +80,7 @@
                   <div v-if="ride.waitTimeMins < 1">
                     <v-icon small>
                       mdi-clock-fast
-                    </v-icon> Accédez à l'attraction maintenant !
+                    </v-icon> Accès immédiat !
                   </div>
                   <div v-else>
                     <v-icon small>
@@ -95,16 +94,45 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-dialog
+      v-model="modal"
+      fullscreen
+      hide-overlay
+      transition="dialog-bottom-transition"
+    >
+      <v-toolbar
+        v-if="selectedRide"
+        color="#134483"
+      >
+        <v-btn
+          icon
+          dark
+          @click="hideModal"
+        >
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+        <v-toolbar-title class="white--text">
+          {{ selectedRide.name }}
+        </v-toolbar-title>
+      </v-toolbar>
+      <v-card>
+        <RideModal v-if="selectedRide" :ride="selectedRide" />
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
 <script>
+import RideModal from '~/components/RideModal';
 export default {
+  components: { RideModal },
   data() {
     return {
       rides: [],
-      error: undefined,
-      interval: undefined
+      error: null,
+      interval: null,
+      selectedRide: null,
+      modal: false
     };
   },
   mounted() {
@@ -117,6 +145,16 @@ export default {
   methods: {
     async fetchRides() {
       this.rides = await this.$axios.$get('/rides').catch(() => {});
+      if (this.selectedRide)
+        this.selectedRide = this.rides.find(ride => ride._id === this.selectedRide._id);
+    },
+    showModal(ride) {
+      this.modal = true;
+      this.selectedRide = ride;
+    },
+    hideModal() {
+      this.modal = false;
+      this.selectedRide = null;
     }
   }
 };
