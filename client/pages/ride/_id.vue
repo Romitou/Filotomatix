@@ -32,9 +32,19 @@
         </div>
       </div>
       <v-divider class="mt-4 mb-4" />
+      <v-btn block class="white--text" color="#134483">
+        <v-icon
+          left
+        >
+          mdi-location-enter
+        </v-icon>
+        Accéder à cette file d'attente
+      </v-btn>
+      <p class="mt-1 blue-grey--text subtitle-2" style="text-align: center;">
+        Temps d'attente estimé à {{ ride.waitTimeMins }} minutes
+      </p>
       <v-divider class="mt-4 mb-4" />
-      Dans OzIris, le 'coaster' suspendu, retrouvez-vous perché à 40 mètres de hauteur et filez à plus de 90km/h. Loopings, vrilles, virages en épingle… C’est à en perdre son latin (et même son égyptien) !
-
+      {{ ride.description }}
     </v-container>
   </div>
 </template>

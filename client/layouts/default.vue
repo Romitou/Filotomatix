@@ -11,8 +11,8 @@
         height="150"
       >
         <v-row class="fill-height pa-2" align="end" justify="center">
-          <v-chip v-if="this.$auth.loggedIn">
-            {{ this.$auth.user.email }}
+          <v-chip v-if="$auth.loggedIn">
+            {{ $auth.user.email }}
           </v-chip>
           <v-chip v-else>
             Invité
@@ -29,7 +29,7 @@
           </v-list-item-icon>
           <v-list-item-title>Attractions</v-list-item-title>
         </v-list-item>
-        <v-list-item v-if="this.$auth.loggedIn" to="account" link nuxt>
+        <v-list-item v-if="$auth.loggedIn" to="account" link nuxt>
           <v-list-item-icon>
             <v-icon>mdi-account-box</v-icon>
           </v-list-item-icon>
@@ -41,7 +41,7 @@
           </v-list-item-icon>
           <v-list-item-title>Se connecter</v-list-item-title>
         </v-list-item>
-        <v-list-item v-if="this.$auth.loggedIn && this.$auth.user.isAdmin" to="admin" link nuxt>
+        <v-list-item v-if="$auth.loggedIn && $auth.user.isAdmin" to="admin" link nuxt>
           <v-list-item-icon>
             <v-icon>mdi-cog</v-icon>
           </v-list-item-icon>
@@ -61,14 +61,17 @@
       clipped-left
       fixed
       app
+      color="#134483"
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon class="white--text" @click.stop="drawer = !drawer" />
       <img
         src="~/assets/filotomatix.png"
-        class="icon"
+        class="icon pa-1 mr-1"
         alt="Icône Filotomatix"
       >
-      <v-toolbar-title>Filotomatix</v-toolbar-title>
+      <v-toolbar-title class="white--text">
+        Filotomatix
+      </v-toolbar-title>
     </v-app-bar>
     <v-main>
       <Nuxt />
