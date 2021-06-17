@@ -1,38 +1,36 @@
 <template>
-  <v-container>
-    <div class="mt-3">
-      <v-card
-        class="mx-auto d-flex justify-center mb-6"
-        width="600"
-        rounded
+  <div>
+    <InfoBar :info="null" />
+    <v-container>
+      <div>
+        Vous pouvez utiliser ce code QR pour vous identifier auprès du service clientèle.
+      </div>
+      <img :src="qrLink" alt="Account QR code">
+      <v-btn
+        block
+        color="blue-grey"
+        class="white--text mt-4"
+        @click="logout"
       >
-        <v-card-text class="text--primary">
-          <div>
-            Présentez ce QR Code au service clientèle pour vous identifier.
-          </div>
-          <br>
-          <v-btn
-            color="blue-grey"
-            class="white--text"
-            @click="logout"
-          >
-            Déconnexion
-            <v-icon
-              right
-            >
-              mdi-logout-variant
-            </v-icon>
-          </v-btn>
-        </v-card-text>
-      </v-card>
-    </div>
-  </v-container>
+        Déconnexion
+        <v-icon right>
+          mdi-logout-variant
+        </v-icon>
+      </v-btn>
+    </v-container>
+  </div>
 </template>
 
 <script>
 export default {
-  middleware: 'auth',
-  auth: true,
+  data: () => {
+    return {
+      qrLink: null
+    };
+  },
+  mounted() {
+    this.qrLink = `${this.$config.axios.browserBaseURL}/auth/qrcode`;
+  },
   methods: {
     async logout() {
       await this.$auth.logout();
