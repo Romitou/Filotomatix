@@ -154,9 +154,6 @@ export default {
     },
     hideModal() {
       this.modal = false;
-      setTimeout(() => {
-        this.selectedRide = null;
-      }, 50);
     }
   }
 };
