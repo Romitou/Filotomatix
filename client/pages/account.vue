@@ -5,7 +5,7 @@
       <div>
         Vous pouvez utiliser ce code QR pour vous identifier auprès du service clientèle.
       </div>
-      <img :src="qrLink" alt="Account QR code">
+      <img v-if="qrCode" :src="qrCode" alt="Account QR code">
       <v-btn
         block
         color="blue-grey"
@@ -25,16 +25,23 @@
 export default {
   data: () => {
     return {
-      qrLink: null
+      qrCode: null
     };
   },
   mounted() {
-    this.qrLink = `${this.$config.axios.browserBaseURL}/auth/qrcode`;
+    this.fetchQrCode();
   },
   methods: {
     async logout() {
       await this.$auth.logout();
       await this.$router.push('/');
+    },
+    async fetchQrCode() {
+      const qrResponse = await this.$axios.$get('/auth/qrcode');
+      if (!qrResponse)
+        return;
+      const { qrCode } = qrResponse;
+      this.qrCode = qrCode;
     }
   }
 };

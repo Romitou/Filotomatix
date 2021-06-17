@@ -42,8 +42,8 @@ export default function auth(fastify: FastifyInstance, _options: FastifyPluginOp
         preValidation: [fastify.authenticate],
         // @ts-expect-error 123456
     }, async (req: FilotomatixRequest, reply: FastifyReply) => {
-        const qrCode = await QRCode.toBuffer(req.user.email);
-        return reply.type('image/png').send(qrCode);
+        const qrCode = await QRCode.toDataURL(req.user.email);
+        return reply.send({ qrCode });
     });
 
     fastify.get('/logout', (async (req: FastifyRequest, reply: FastifyReply) => reply.send({ status: 'OK' })));
