@@ -3,9 +3,7 @@
     <div class="pa-3" style="background-color: #e9ecef;">
       Filotomatix est fermé.
     </div>
-    <v-container
-      fluid
-    >
+    <v-container fluid>
       <v-card class="mb-3">
         <v-img
           src="/banner.png"
@@ -20,11 +18,7 @@
           </div>
         </v-card-subtitle>
       </v-card>
-      <v-row
-
-        dense
-        align="start"
-      >
+      <v-row dense>
         <v-col
           v-for="ride in rides"
           :key="ride._id"
@@ -32,7 +26,6 @@
         >
           <v-card
             hover
-            link
             @click="showModal(ride)"
           >
             <v-img
@@ -100,22 +93,22 @@
       hide-overlay
       transition="dialog-bottom-transition"
     >
-      <v-toolbar
-        v-if="selectedRide"
-        color="#134483"
-      >
-        <v-btn
-          icon
-          dark
-          @click="hideModal"
-        >
-          <v-icon>mdi-close</v-icon>
-        </v-btn>
-        <v-toolbar-title class="white--text">
-          {{ selectedRide.name }}
-        </v-toolbar-title>
-      </v-toolbar>
       <v-card>
+        <v-toolbar
+          v-if="selectedRide"
+          color="#134483"
+        >
+          <v-btn
+            icon
+            dark
+            @click="hideModal"
+          >
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+          <v-toolbar-title class="white--text">
+            {{ selectedRide.name }}
+          </v-toolbar-title>
+        </v-toolbar>
         <RideModal v-if="selectedRide" :ride="selectedRide" />
       </v-card>
     </v-dialog>
