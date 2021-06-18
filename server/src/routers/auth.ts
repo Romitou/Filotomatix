@@ -3,12 +3,13 @@ import type {
  FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyRequest,
 } from 'fastify';
 import jsonwebtoken from 'jsonwebtoken';
+import QRCode from 'qrcode';
 import { config } from '../config';
 import User from '../models/user';
 import type { FilotomatixRequest, LoginRequest } from '../typings/routers';
-import QRCode from 'qrcode';
 
 export default function auth(fastify: FastifyInstance, _options: FastifyPluginOptions): FastifyInstance {
+
     // @ts-expect-error 123456
     fastify.post('/login', (async (request: LoginRequest, reply: FastifyReply) => {
         const { email, password } = request.body;

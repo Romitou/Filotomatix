@@ -102,7 +102,9 @@ export default {
   },
   methods: {
     async fetchRides() {
-      this.rides = await this.$axios.$get('/rides/admin').catch(() => {});
+      if (this.modal)
+        return;
+      this.rides = await this.$axios.$get('/admin/rides').catch(() => {});
       if (this.selectedRide)
         this.selectedRide = this.rides.find(ride => ride._id === this.selectedRide._id);
     },

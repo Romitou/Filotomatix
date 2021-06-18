@@ -1,4 +1,5 @@
 import type { FastifyRequest } from 'fastify';
+import type { RideDocument } from './models';
 
 export interface FilotomatixRequest extends FastifyRequest {
     user: {
@@ -14,8 +15,6 @@ export interface LoginRequest extends FastifyRequest {
     };
 }
 
-export interface RideRequest extends FastifyRequest {
-    params: {
-        id: string;
-    };
+export interface PatchRideRequest extends FastifyRequest {
+    body: RideDocument;
 }
