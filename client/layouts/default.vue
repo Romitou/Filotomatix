@@ -40,7 +40,7 @@
           </v-list-item-icon>
           <v-list-item-title>Se connecter</v-list-item-title>
         </v-list-item>
-        <v-list-item v-show="this.$auth.loggedIn && this.$auth.user.isAdmin" link nuxt to="admin">
+        <v-list-item v-show="this.$auth.loggedIn && this.$auth.user.admin" link nuxt to="admin">
           <v-list-item-icon>
             <v-icon>mdi-cog</v-icon>
           </v-list-item-icon>

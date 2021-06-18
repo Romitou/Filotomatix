@@ -23,7 +23,7 @@
         dense
         nav
       >
-        <v-list-item link nuxt to="/admin/">
+        <v-list-item link nuxt to="/admin">
           <v-list-item-icon>
             <v-icon>mdi-home</v-icon>
           </v-list-item-icon>
@@ -83,7 +83,7 @@ export default {
     };
   },
   beforeCreate() {
-    if (!this.$auth.loggedIn)
+    if (!this.$auth.loggedIn && this.$auth.user.admin)
       this.$router.push('/login');
   }
 };
