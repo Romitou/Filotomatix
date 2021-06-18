@@ -46,11 +46,13 @@
       </v-row>
       <v-divider class="my-4" />
       <v-textarea
+        v-model="dataRide.description"
         label="Description de l'attraction"
         rows="1"
         prepend-icon="mdi-card-text"
       />
       <v-textarea
+        v-model="dataRide.position"
         label="Position de l'attraction"
         rows="1"
         prepend-icon="mdi-map-marker"
