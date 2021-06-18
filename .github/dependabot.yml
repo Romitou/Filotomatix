@@ -3,4 +3,8 @@ updates:
   - package-ecosystem: npm
     schedule:
       interval: daily
-    directory: "/"
+    directory: "/client"
+  - package-ecosystem: npm
+    schedule:
+      interval: daily
+    directory: "/server"
