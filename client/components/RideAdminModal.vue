@@ -78,6 +78,8 @@
       </v-btn>
       <v-divider class="my-4" />
       <v-btn
+        :loading="loading"
+        :disabled="loading"
         block
         color="green"
         class="white--text"
@@ -85,6 +87,14 @@
       >
         Enregistrer les modifications
       </v-btn>
+      <v-alert
+        v-if="error"
+        text
+        border="left"
+        color="red"
+      >
+        {{ error }}
+      </v-alert>
     </v-container>
   </div>
 </template>
@@ -94,7 +104,9 @@ export default {
   props: ['ride'],
   data: () => {
     return {
-      dataRide: null
+      dataRide: null,
+      loading: false,
+      error: null
     };
   },
   watch: {
@@ -109,7 +121,11 @@ export default {
   },
   methods: {
     async save() {
-      await this.$axios.$patch('/admin/rides', this.dataRide);
+      this.loading = true;
+      await this.$axios.$patch('/admin/rides', this.dataRide).catch((err) => {
+        this.error = err;
+      });
+      this.loading = false;
     }
   }
 };
