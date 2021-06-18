@@ -11,8 +11,8 @@
         src="https://cache.filevirtuelle.parcasterix.fr/images/pages/nav.jpg"
       >
         <v-row align="end" class="fill-height pa-2" justify="center">
-          <v-chip v-if="$auth.loggedIn">
-            {{ $auth.user.email }}
+          <v-chip v-if="this.$auth.loggedIn">
+            {{ this.$auth.user.email }}
           </v-chip>
           <v-chip v-else>
             Invité

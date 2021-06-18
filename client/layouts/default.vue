@@ -10,8 +10,8 @@
         src="https://cache.filevirtuelle.parcasterix.fr/images/pages/nav.jpg"
       >
         <v-row align="end" class="fill-height pa-2" justify="center">
-          <v-chip v-if="$auth.loggedIn">
-            {{ $auth.user.email }}
+          <v-chip v-if="this.$auth.loggedIn">
+            {{ this.$auth.user.email }}
           </v-chip>
           <v-chip v-else>
             Invité
@@ -40,13 +40,13 @@
           </v-list-item-icon>
           <v-list-item-title>Se connecter</v-list-item-title>
         </v-list-item>
-        <v-list-item v-if="$auth.loggedIn && $auth.user.isAdmin" link nuxt to="admin">
+        <v-list-item v-show="this.$auth.loggedIn && this.$auth.user.isAdmin" link nuxt to="admin">
           <v-list-item-icon>
             <v-icon>mdi-cog</v-icon>
           </v-list-item-icon>
           <v-list-item-title>Administration</v-list-item-title>
         </v-list-item>
-        <v-divider class="ma-2"/>
+        <v-divider class="ma-2" />
         <v-list-item link>
           <v-list-item-icon>
             <v-icon>mdi-help</v-icon>
@@ -73,7 +73,7 @@
       </v-toolbar-title>
     </v-app-bar>
     <v-main>
-      <Nuxt/>
+      <Nuxt />
     </v-main>
   </v-app>
 </template>
