@@ -41,7 +41,7 @@ export default function adminRouter(fastify: FastifyInstance, _options: FastifyP
             openingTime: req.body.openingTime,
             closingTime: req.body.closingTime,
         });
-        return reply.code(200);
+        return reply.code(200).send({ message: 'Vos modifications ont été enregistrées.' });
     });
 
     return fastify;
