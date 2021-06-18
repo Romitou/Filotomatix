@@ -24,7 +24,23 @@ export default function adminRouter(fastify: FastifyInstance, _options: FastifyP
         const ride: RideDocument | null = await Ride.findOne({ _id: req.body._id });
         if (!ride)
             return reply.code(404).send({ message: 'Cette attraction n\'est pas enregistrée dans la base de données.' });
-        await Ride.findOneAndUpdate({ _id: ride._id }, { $set: req.body });
+        await Ride.findOneAndUpdate({
+            _id: ride._id,
+        }, {
+            name: req.body.name,
+            status: req.body.status,
+            image: req.body.image,
+            description: req.body.description,
+            position: req.body.position,
+            restrictions: req.body.restrictions,
+            throughput: req.body.throughput,
+            queueLength: req.body.queueLength,
+            maxReservations: req.body.maxReservations,
+            reservations: req.body.reservations,
+            waitTimeMins: req.body.waitTimeMins,
+            openingTime: req.body.openingTime,
+            closingTime: req.body.closingTime,
+        });
         return reply.code(200);
     });
 
