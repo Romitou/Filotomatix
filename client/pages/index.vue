@@ -2,7 +2,7 @@
   <div>
     <InfoBar :info="null" />
     <v-container fluid>
-      <v-card class="mb-3" style="background-color: #134483;">
+      <v-card class="mb-5" style="background-color: #134483;">
         <v-img
           height="100"
           src="/banner.png"
@@ -18,7 +18,41 @@
       </v-card>
       <v-row dense>
         <v-col
-          v-for="ride in rides"
+          cols="6"
+        >
+          <v-btn
+            block
+            color="#415A77"
+            class="white--text"
+            :depressed="isAlphaSort"
+            @click="setSort(true)"
+          >
+            <v-icon left>
+              mdi-sort-alphabetical-variant
+            </v-icon>
+            A-Z
+          </v-btn>
+        </v-col>
+        <v-col
+          cols="6"
+        >
+          <v-btn
+            block
+            color="#415A77"
+            class="white--text"
+            :depressed="!isAlphaSort"
+            @click="setSort(false)"
+          >
+            <v-icon left>
+              mdi-sort-clock-ascending-outline
+            </v-icon>
+            Attente
+          </v-btn>
+        </v-col>
+      </v-row>
+      <v-row dense>
+        <v-col
+          v-for="ride in showedRides"
           :key="ride._id"
           cols="6"
         >
@@ -129,6 +163,8 @@ export default {
   data() {
     return {
       rides: [],
+      showedRides: [],
+      isAlphaSort: false,
       error: null,
       interval: null,
       selectedRide: null,
@@ -144,10 +180,10 @@ export default {
   },
   methods: {
     async fetchRides() {
-      this.rides = await this.$axios.$get('/rides').catch(() => {
-      });
+      this.rides = await this.$axios.$get('/rides').catch(() => {});
       if (this.selectedRide)
         this.selectedRide = this.rides.find(ride => ride._id === this.selectedRide._id);
+      this.sortRides();
     },
     showModal(ride) {
       this.modal = true;
@@ -155,6 +191,22 @@ export default {
     },
     hideModal() {
       this.modal = false;
+    },
+    setSort(isAlpha) {
+      this.isAlphaSort = isAlpha;
+      this.sortRides();
+    },
+    sortRides() {
+      if (this.isAlphaSort)
+        this.showedRides = this.rides.sort((a, b) => {
+          if (a.name < b.name)
+            return -1;
+          if (a.name > b.name)
+            return 1;
+          return 0;
+        });
+      else
+        this.showedRides = this.rides.sort((a, b) => a.waitTimeMins - b.waitTimeMins);
     }
   }
 };
