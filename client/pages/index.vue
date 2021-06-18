@@ -4,8 +4,8 @@
     <v-container fluid>
       <v-card class="mb-3" style="background-color: #134483;">
         <v-img
-          src="/banner.png"
           height="100"
+          src="/banner.png"
         />
         <v-card-subtitle class="pa-2">
           <div class="subtitle-2 white--text">
@@ -28,8 +28,8 @@
           >
             <v-img
               :src="ride.image"
-              class="white--text align-end"
               aspect-ratio="4:3"
+              class="white--text align-end"
               height="100"
             />
 
@@ -40,43 +40,50 @@
               <div style="font-size: 12px;">
                 <div v-if="ride.status === 'closed'">
                   <div class="red--text">
-                    <v-icon small color="red">
+                    <v-icon color="red" small>
                       mdi-cancel
-                    </v-icon> Fermé
+                    </v-icon>
+                    Fermé
                   </div>
                   <div>
                     <v-icon small>
                       mdi-clock-alert-outline
-                    </v-icon> Réserver ultérieurement
+                    </v-icon>
+                    Réserver ultérieurement
                   </div>
                 </div>
                 <div v-else-if="ride.status === 'full'">
                   <div class="orange--text">
-                    <v-icon small color="orange">
+                    <v-icon color="orange" small>
                       mdi-account-cancel
-                    </v-icon> Complet
+                    </v-icon>
+                    Complet
                   </div>
                   <div>
                     <v-icon small>
                       mdi-clock-alert-outline
-                    </v-icon> Réserver ultérieurement
+                    </v-icon>
+                    Réserver ultérieurement
                   </div>
                 </div>
                 <div v-else>
                   <div class="green--text">
-                    <v-icon small color="green">
+                    <v-icon color="green" small>
                       mdi-check-circle-outline
-                    </v-icon> Ouvert
+                    </v-icon>
+                    Ouvert
                   </div>
                   <div v-if="ride.waitTimeMins < 1">
                     <v-icon small>
                       mdi-clock-fast
-                    </v-icon> Accès immédiat !
+                    </v-icon>
+                    Accès immédiat !
                   </div>
                   <div v-else>
                     <v-icon small>
                       mdi-clock-outline
-                    </v-icon> {{ ride.waitTimeMins }} minute{{ ride.waitTimeMins > 1 ? 's' : '' }}
+                    </v-icon>
+                    {{ ride.waitTimeMins }} minute{{ ride.waitTimeMins > 1 ? 's' : '' }}
                   </div>
                 </div>
               </div>
@@ -97,8 +104,8 @@
           color="#134483"
         >
           <v-btn
-            icon
             dark
+            icon
             @click="hideModal"
           >
             <v-icon>mdi-close</v-icon>
@@ -116,6 +123,7 @@
 
 <script>
 import RideModal from '~/components/RideModal';
+
 export default {
   components: { RideModal },
   data() {
@@ -136,7 +144,8 @@ export default {
   },
   methods: {
     async fetchRides() {
-      this.rides = await this.$axios.$get('/rides').catch(() => {});
+      this.rides = await this.$axios.$get('/rides').catch(() => {
+      });
       if (this.selectedRide)
         this.selectedRide = this.rides.find(ride => ride._id === this.selectedRide._id);
     },

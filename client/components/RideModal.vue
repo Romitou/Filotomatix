@@ -13,25 +13,28 @@
           <div class="red--text">
             <v-icon color="red">
               mdi-cancel
-            </v-icon> Fermé
+            </v-icon>
+            Fermé
           </div>
         </div>
         <div v-else-if="ride.status === 'full'">
           <div class="orange--text">
             <v-icon color="orange">
               mdi-account-cancel
-            </v-icon> Complet
+            </v-icon>
+            Complet
           </div>
         </div>
         <div v-else>
           <div class="green--text">
             <v-icon color="green">
               mdi-check-circle-outline
-            </v-icon> Ouvert
+            </v-icon>
+            Ouvert
           </div>
         </div>
       </div>
-      <v-divider class="my-4" />
+      <v-divider class="my-4"/>
       <div v-if="ride.status === 'open'">
         <v-btn block class="white--text" color="#134483">
           <v-icon left>
@@ -44,41 +47,42 @@
         </p>
       </div>
       <div v-else-if="ride.status === 'closed'">
-        <v-btn block disabled class="white--text" color="#134483">
+        <v-btn block class="white--text" color="#134483" disabled>
           <v-icon left>
             mdi-location-enter
           </v-icon>
           Accéder à cette file d'attente
         </v-btn>
         <v-alert
+          border="left"
           class="mt-2 body-2"
           color="red"
-          border="left"
           dense
           text
         >
-          Désolé, cette attraction est actuellement fermée, il est donc impossible d'accéder à sa file d'attente pour le moment.
+          Désolé, cette attraction est actuellement fermée, il est donc impossible d'accéder à sa file d'attente pour le
+          moment.
         </v-alert>
       </div>
       <div v-else-if="ride.status === 'full'">
-        <v-btn block disabled class="white--text" color="#134483">
+        <v-btn block class="white--text" color="#134483" disabled>
           <v-icon left>
             mdi-location-enter
           </v-icon>
           Accéder à cette file d'attente
         </v-btn>
         <v-alert
+          border="left"
           class="mt-2 body-2"
           color="orange"
-          border="left"
           dense
           text
         >
-          Trop de visiteurs ont réservé cette attraction : sa file d'attente est complète !
+          Beaucoup de visiteurs ont réservé cette attraction : sa file d'attente est complète !
           N'hésitez pas à réserver d'autres attractions et revenir plus tard.
         </v-alert>
       </div>
-      <v-divider class="my-4" />
+      <v-divider class="my-4"/>
       <div class="my-3 body-2">
         <v-icon>
           mdi-card-text

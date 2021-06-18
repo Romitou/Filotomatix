@@ -6,12 +6,12 @@
         Vous pouvez utiliser ce code QR pour vous identifier auprès du service clientèle.
       </div>
       <div class="text-center">
-        <img v-if="qrCode" :src="qrCode" height="200" alt="Account QR code">
+        <img v-if="qrCode" :src="qrCode" alt="Account QR code" height="200">
       </div>
       <v-btn
         block
-        color="blue-grey"
         class="white--text"
+        color="blue-grey"
         @click="logout"
       >
         Déconnexion

@@ -2,8 +2,8 @@
   <div class="mt-3">
     <v-card
       class="mx-auto d-flex justify-center mb-6"
-      width="600"
       rounded
+      width="600"
     >
       <v-card-text class="text--primary">
         <div>
@@ -28,8 +28,8 @@
             <v-row class="justify-center mt-2">
               <v-col
                 cols="12"
-                sm="6"
                 md="5"
+                sm="6"
               >
                 <v-text-field
                   v-model="throughput"
@@ -39,8 +39,8 @@
               </v-col>
               <v-col
                 cols="12"
-                sm="6"
                 md="5"
+                sm="6"
               >
                 <v-text-field
                   v-model="maxReservations"
@@ -51,8 +51,8 @@
             </v-row>
             <v-btn
               :disabled="!valid"
-              color="success"
               class="mr-4"
+              color="success"
               @click="sendRide"
             >
               Validate

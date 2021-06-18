@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-simple-table>
-      <template v-slot:default>
+      <template #default>
         <thead>
           <tr>
             <th class="text-left">
@@ -51,9 +51,9 @@
             <td> {{ ride.queueLength }} visiteur{{ ride.queueLength > 1 ? 's' : '' }}</td>
             <td>
               <v-btn
-                icon
-                color="grey"
                 :to="'admin/rides/' + ride._id"
+                color="grey"
+                icon
               >
                 <v-icon>mdi-circle-edit-outline</v-icon>
               </v-btn>
@@ -65,13 +65,13 @@
     <v-btn
       class="mt-5"
       color="primary"
-      to="admin/rides/new"
       nuxt
+      to="admin/rides/new"
     >
       Ajouter une attraction
       <v-icon
-        right
         dark
+        right
       >
         mdi-plus
       </v-icon>
@@ -85,8 +85,8 @@ export default {
   middleware: ['auth'],
   auth: true,
   async asyncData({ $axios }) {
-    const req = await $axios.get('/rides');
-    return { rides: req.data };
+    const req = await $axios.$get('/rides');
+    return { rides: req };
   },
   data() {
     return {

@@ -14,31 +14,32 @@
         <v-text-field
           v-model="email"
           :rules="emailRules"
+          dense
           label="Adresse mail"
           outlined
-          dense
           required
         />
 
         <v-text-field
           v-model="password"
-          type="password"
           :rules="passwordRules"
+          dense
           label="Mot de passe"
           outlined
-          dense
           required
+          type="password"
         />
 
         <div class="body-2 mb-4">
-          En vous enregistrant ou en vous connectant, vous acceptez les Conditions d’utilisation Filotomatix. Vos données sont utilisées uniquement pour les besoins de l’accès et du fonctionnement de Filotomatix.
+          En vous enregistrant ou en vous connectant, vous acceptez les Conditions d’utilisation Filotomatix. Vos
+          données sont utilisées uniquement pour les besoins de l’accès et du fonctionnement de Filotomatix.
         </div>
 
         <v-alert
           v-if="error"
           border="left"
-          color="red"
           class="body-2"
+          color="red"
           dense
           text
         >
@@ -48,9 +49,9 @@
         <v-btn
           :disabled="!valid || loading"
           :loading="loading"
+          block
           color="success"
           @click="login"
-          block
         >
           Se connecter / s'enregistrer
         </v-btn>

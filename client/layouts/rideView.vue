@@ -1,10 +1,10 @@
 <template>
   <v-app>
     <v-app-bar
-      clipped-left
-      fixed
       app
+      clipped-left
       color="#134483"
+      fixed
     >
       <v-btn icon to="/">
         <v-icon class="white--text">
@@ -12,9 +12,9 @@
         </v-icon>
       </v-btn>
       <img
-        src="~/assets/filotomatix.png"
-        class="icon pa-1 mr-1"
         alt="Icône Filotomatix"
+        class="icon pa-1 mr-1"
+        src="~/assets/filotomatix.png"
       >
       <v-toolbar-title class="white--text">
         Filotomatix
