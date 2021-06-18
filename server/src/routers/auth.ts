@@ -27,7 +27,7 @@ export default function auth(fastify: FastifyInstance, _options: FastifyPluginOp
             await newUser.save();
         }
 
-        const user = { email, isAdmin: existingUser?.admin };
+        const user = { email, admin: existingUser?.admin ?? false };
         const accessToken = jsonwebtoken.sign(user, config.JWT_SECRET, { expiresIn: config.JWT_EXPIRATION });
         return reply.send({ accessToken });
     }));

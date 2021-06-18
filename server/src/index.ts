@@ -5,12 +5,14 @@ import fastifyCors from 'fastify-cors';
 import fastifyJWT from 'fastify-jwt';
 import mongoose from 'mongoose';
 import { config, loadConfig } from './config';
+import admin from './decorations/admin';
 import authenticate from './decorations/authenticate';
 import auth from './routers/auth';
 import rides from './routers/rides';
 
 const server: FastifyInstance = fastify({ logger: true });
 server.decorate('authenticate', authenticate);
+server.decorate('admin', admin);
 
 async function start(): Promise<void> {
     loadConfig();

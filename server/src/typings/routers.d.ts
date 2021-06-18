@@ -3,6 +3,7 @@ import type { FastifyRequest } from 'fastify';
 export interface FilotomatixRequest extends FastifyRequest {
     user: {
         email: string;
+        admin: boolean;
     };
 }
 
