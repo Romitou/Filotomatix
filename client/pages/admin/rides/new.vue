@@ -67,8 +67,6 @@
 <script>
 export default {
   layout: 'admin',
-  middleware: ['auth'],
-  auth: true,
   data() {
     return {
       valid: true,

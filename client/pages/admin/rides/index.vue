@@ -82,8 +82,6 @@
 <script>
 export default {
   layout: 'admin',
-  middleware: ['auth'],
-  auth: true,
   async asyncData({ $axios }) {
     const req = await $axios.$get('/rides');
     return { rides: req };
