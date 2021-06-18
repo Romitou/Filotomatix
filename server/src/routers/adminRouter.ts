@@ -6,7 +6,7 @@ import type { RideDocument } from '../typings/models';
 import type { PatchRideRequest } from '../typings/routers';
 import formatRide from '../utils/formatRide';
 
-export default function rides(fastify: FastifyInstance, _options: FastifyPluginOptions): FastifyInstance {
+export default function adminRouter(fastify: FastifyInstance, _options: FastifyPluginOptions): FastifyInstance {
     fastify.get('/rides', {
         // @ts-expect-error 123456
         preValidation: [fastify.admin],

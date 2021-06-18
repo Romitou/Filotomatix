@@ -7,8 +7,9 @@ import mongoose from 'mongoose';
 import { config, loadConfig } from './config';
 import admin from './decorations/admin';
 import authenticate from './decorations/authenticate';
-import auth from './routers/auth';
-import rides from './routers/rides';
+import adminRouter from './routers/adminRouter';
+import authRouter from './routers/authRouter';
+import rideRouter from './routers/rideRouter';
 
 const server: FastifyInstance = fastify({ logger: true });
 server.decorate('authenticate', authenticate);
@@ -23,8 +24,9 @@ async function start(): Promise<void> {
     });
     await server.register(fastifyCors, { origin: '*' });
     await server.register(fastifyJWT, { secret: config.JWT_SECRET });
-    await server.register(auth, { prefix: '/auth' });
-    await server.register(rides, { prefix: '/rides' });
+    await server.register(adminRouter, { prefix: '/admin' });
+    await server.register(authRouter, { prefix: '/auth' });
+    await server.register(rideRouter, { prefix: '/rides' });
     await server.listen(config.HTTP_PORT);
 }
 

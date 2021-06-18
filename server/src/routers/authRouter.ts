@@ -8,7 +8,7 @@ import { config } from '../config';
 import User from '../models/user';
 import type { FilotomatixRequest, LoginRequest } from '../typings/routers';
 
-export default function auth(fastify: FastifyInstance, _options: FastifyPluginOptions): FastifyInstance {
+export default function authRouter(fastify: FastifyInstance, _options: FastifyPluginOptions): FastifyInstance {
 
     // @ts-expect-error 123456
     fastify.post('/login', (async (request: LoginRequest, reply: FastifyReply) => {
