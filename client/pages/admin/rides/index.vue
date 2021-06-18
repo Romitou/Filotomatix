@@ -51,7 +51,6 @@
             <td> {{ ride.queueLength }} visiteur{{ ride.queueLength > 1 ? 's' : '' }}</td>
             <td>
               <v-btn
-                :to="'admin/rides/' + ride._id"
                 color="grey"
                 icon
               >
@@ -66,7 +65,7 @@
       class="mt-5"
       color="primary"
       nuxt
-      to="admin/rides/new"
+      to="/admin/rides/new"
     >
       Ajouter une attraction
       <v-icon
