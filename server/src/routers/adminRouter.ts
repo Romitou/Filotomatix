@@ -21,11 +21,11 @@ export default function adminRouter(fastify: FastifyInstance, _options: FastifyP
         preValidation: [fastify.admin],
         // @ts-expect-error 123456
     }, async (req: PatchRideRequest, reply: FastifyReply) => {
-        let ride: RideDocument | null = await Ride.findOne({ _id: req.body._id });
+        const ride: RideDocument | null = await Ride.findOne({ _id: req.body._id });
         if (!ride)
             return reply.code(404).send({ message: 'Cette attraction n\'est pas enregistrée dans la base de données.' });
-        ride = req.body;
-        await ride.save();
+        await Ride.findOneAndUpdate({ _id: ride._id }, { $set: req.body });
+        return reply.code(200);
     });
 
     return fastify;
