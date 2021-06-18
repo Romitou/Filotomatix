@@ -11,10 +11,10 @@ export interface RideDocument extends Document {
     description: string;
     position: string;
     restrictions: string[];
-    throughput: number;
-    queueLength: number;
-    maxReservations: number;
-    reservations: number;
+    throughput: number | null;
+    queueLength: number | null;
+    maxReservations: number | null;
+    reservations: number | null;
     waitTimeMins: number;
     openingTime: string;
     closingTime: string;

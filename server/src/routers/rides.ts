@@ -4,14 +4,14 @@ import type {
 import Ride from '../models/ride';
 import type { RideDocument } from '../typings/models';
 import type { RideRequest } from '../typings/routers';
-import waitingTime from '../utils/waitingTime';
+import formatRide from '../utils/formatRide';
 
 export default function rides(fastify: FastifyInstance, _options: FastifyPluginOptions): FastifyInstance {
     fastify.get('/', async (req: FastifyRequest, reply: FastifyReply) => {
         const allRides: RideDocument[] = await Ride.find({});
-        for (const ride of allRides)
-            ride.waitTimeMins = waitingTime(ride);
-        return reply.send(allRides);
+        console.log(allRides);
+        const r = allRides.map(ride => formatRide(ride, true));
+        return reply.send(r);
     });
 
     // @ts-expect-error 123456
@@ -20,8 +20,7 @@ export default function rides(fastify: FastifyInstance, _options: FastifyPluginO
         const ride: RideDocument = await Ride.findOne({ _id: req.params.id });
         if (!ride)
             return reply.code(404).send({ message: 'Aucune attraction trouvée via cet identifiant.' });
-        ride.waitTimeMins = waitingTime(ride);
-        return reply.send(ride);
+        return reply.send(formatRide(ride, true));
     });
 
     return fastify;
