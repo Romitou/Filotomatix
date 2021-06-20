@@ -46,7 +46,7 @@
     "@types/socket.io": "^3.0.2",
     "@types/uuid": "^8.3.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.28.0",
+    "eslint": "^7.29.0",
     "eslint-plugin-nuxt": "^2.0.0"
   }
 }
