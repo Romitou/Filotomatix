@@ -95,7 +95,7 @@
           N'hésitez pas à réserver d'autres attractions et revenir plus tard.
         </v-alert>
       </div>
-      <v-divider class="my-4" ;/>
+      <v-divider class="my-4" />
       <div class="my-3 body-2">
         <v-icon>
           mdi-card-text
