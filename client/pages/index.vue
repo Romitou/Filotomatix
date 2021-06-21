@@ -61,7 +61,7 @@
             @click="showModal(ride)"
           >
             <v-img
-              :src="`${ride.image}?height=100`"
+              :src="ride.image"
               aspect-ratio="4:3"
               class="white--text align-end"
               height="100"

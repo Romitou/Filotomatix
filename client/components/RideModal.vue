@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-img
-      :src="`${ride.image}?height=200`"
+      :src="ride.image"
       height="200"
     >
       <template #placeholder>
@@ -47,7 +47,7 @@
           </div>
         </div>
       </div>
-      <v-divider class="my-4"/>
+      <v-divider class="my-4" />
       <div v-if="ride.status === 'open'">
         <v-btn block class="white--text" color="#134483">
           <v-icon left>
@@ -95,7 +95,7 @@
           N'hésitez pas à réserver d'autres attractions et revenir plus tard.
         </v-alert>
       </div>
-      <v-divider class="my-4"/>
+      <v-divider class="my-4" ;/>
       <div class="my-3 body-2">
         <v-icon>
           mdi-card-text
