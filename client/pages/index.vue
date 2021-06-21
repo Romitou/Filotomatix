@@ -5,7 +5,7 @@
       <v-card
         nuxt
         to="/offers"
-        class="mb-5"
+        class="mb-4"
         color="primary"
       >
         <v-img
@@ -161,7 +161,7 @@
           >
             <v-icon>mdi-close</v-icon>
           </v-btn>
-          <v-toolbar-title>
+          <v-toolbar-title class="white--text">
             {{ selectedRide.name }}
           </v-toolbar-title>
         </v-toolbar>
