@@ -10,8 +10,8 @@
         src="https://bild.romitou.fr/contents/95fYHVJ5S3.png?height=150"
       >
         <v-row align="end" class="fill-height pa-2" justify="center">
-          <v-chip v-if="this.$auth.loggedIn">
-            {{ this.$auth.user.email }}
+          <v-chip v-if="$auth.loggedIn">
+            {{ $auth.user.email }}
           </v-chip>
           <v-chip v-else>
             Invité
@@ -40,7 +40,7 @@
           </v-list-item-icon>
           <v-list-item-title>Se connecter</v-list-item-title>
         </v-list-item>
-        <v-list-item v-show="this.$auth.loggedIn && this.$auth.user.admin" link nuxt to="admin">
+        <v-list-item v-show="$auth.loggedIn && $auth.user.admin" link nuxt to="admin">
           <v-list-item-icon>
             <v-icon>mdi-cog</v-icon>
           </v-list-item-icon>
@@ -53,16 +53,24 @@
           </v-list-item-icon>
           <v-list-item-title>Comment utiliser ?</v-list-item-title>
         </v-list-item>
+        <v-divider class="ma-2" />
+        <v-list-item>
+          <v-switch
+            v-model="$vuetify.theme.dark"
+            persistent-hint
+          />
+          <v-list-item-title>Thème sombre</v-list-item-title>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
     <v-app-bar
       app
       clipped-left
-      color="#134483"
+      color="primary"
       fixed
     >
-      <v-app-bar-nav-icon class="white--text" @click.stop="drawer = !drawer"/>
+      <v-app-bar-nav-icon class="white--text" @click.stop="drawer = !drawer" />
       <img
         alt="Icône Filotomatix"
         class="icon pa-1 mr-1"

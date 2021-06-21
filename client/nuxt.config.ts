@@ -81,6 +81,19 @@ export default {
     }
   },
 
+  vuetify: {
+    theme: {
+      themes: {
+        light: {
+          primary: '#134483'
+        },
+        dark: {
+          primary: '#134483'
+        }
+      }
+    }
+  },
+
   server: {
     port: process.env.APP_PORT || 3000
   }

@@ -1,7 +1,7 @@
 <template>
-  <div class="pa-3" style="background-color: #e9ecef;">
+  <v-card outlined tile color="blue-grey" class="pa-3 white--text">
     Filotomatix est fermé.
-  </div>
+  </v-card>
 </template>
 
 <script>

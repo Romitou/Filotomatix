@@ -49,7 +49,7 @@
       </div>
       <v-divider class="my-4" />
       <div v-if="ride.status === 'open'">
-        <v-btn block class="white--text" color="#134483">
+        <v-btn block class="white--text" color="primary">
           <v-icon left>
             mdi-location-enter
           </v-icon>
@@ -60,7 +60,7 @@
         </p>
       </div>
       <div v-else-if="ride.status === 'closed'">
-        <v-btn block class="white--text" color="#134483" disabled>
+        <v-btn block class="white--text" color="primary" disabled>
           <v-icon left>
             mdi-location-enter
           </v-icon>
@@ -78,7 +78,7 @@
         </v-alert>
       </div>
       <div v-else-if="ride.status === 'full'">
-        <v-btn block class="white--text" color="#134483" disabled>
+        <v-btn block class="white--text" color="primary" disabled>
           <v-icon left>
             mdi-location-enter
           </v-icon>

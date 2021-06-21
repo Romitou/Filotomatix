@@ -53,7 +53,7 @@
     <v-app-bar
       app
       clipped-left
-      color="#134483"
+      color="primary"
       fixed
     >
       <v-app-bar-nav-icon class="white--text" @click.stop="drawer = !drawer" />

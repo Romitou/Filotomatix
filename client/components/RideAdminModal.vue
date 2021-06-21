@@ -73,7 +73,7 @@
           />
         </div>
       </div>
-      <v-btn color="#134483" class="white--text" @click="dataRide.restrictions.push('')">
+      <v-btn color="primary" class="white--text" @click="dataRide.restrictions.push('')">
         Ajouter une restriction
       </v-btn>
       <v-divider class="my-4" />

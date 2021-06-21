@@ -2,7 +2,12 @@
   <div>
     <InfoBar :info="null" />
     <v-container fluid>
-      <v-card class="mb-5" style="background-color: #134483;">
+      <v-card
+        nuxt
+        to="/offers"
+        class="mb-5"
+        color="primary"
+      >
         <v-img
           height="100"
           src="/banner.png"
@@ -63,7 +68,6 @@
             <v-img
               :src="ride.image"
               aspect-ratio="4:3"
-              class="white--text align-end"
               height="100"
             >
               <template #placeholder>
@@ -148,7 +152,7 @@
       <v-card>
         <v-toolbar
           v-if="selectedRide"
-          color="#134483"
+          color="primary"
         >
           <v-btn
             dark
@@ -157,7 +161,7 @@
           >
             <v-icon>mdi-close</v-icon>
           </v-btn>
-          <v-toolbar-title class="white--text">
+          <v-toolbar-title>
             {{ selectedRide.name }}
           </v-toolbar-title>
         </v-toolbar>

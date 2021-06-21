@@ -59,7 +59,7 @@
       <v-card>
         <v-toolbar
           v-if="selectedRide"
-          color="#134483"
+          color="primary"
         >
           <v-btn
             dark

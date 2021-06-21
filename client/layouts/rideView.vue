@@ -3,7 +3,7 @@
     <v-app-bar
       app
       clipped-left
-      color="#134483"
+      color="primary"
       fixed
     >
       <v-btn icon to="/">
