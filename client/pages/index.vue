@@ -61,11 +61,24 @@
             @click="showModal(ride)"
           >
             <v-img
-              :src="ride.image"
+              :src="`${ride.image}?height=100`"
               aspect-ratio="4:3"
               class="white--text align-end"
               height="100"
-            />
+            >
+              <template #placeholder>
+                <v-row
+                  class="fill-height ma-0"
+                  align="center"
+                  justify="center"
+                >
+                  <v-progress-circular
+                    indeterminate
+                    color="grey"
+                  />
+                </v-row>
+              </template>
+            </v-img>
 
             <v-card-subtitle class="pa-2">
               <div class="blue-grey--text subtitle-2">

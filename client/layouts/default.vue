@@ -7,7 +7,7 @@
     >
       <v-img
         height="150"
-        src="https://cache.filevirtuelle.parcasterix.fr/images/pages/nav.jpg"
+        src="https://bild.romitou.fr/contents/95fYHVJ5S3.png?height=150"
       >
         <v-row align="end" class="fill-height pa-2" justify="center">
           <v-chip v-if="this.$auth.loggedIn">

@@ -1,9 +1,22 @@
 <template>
   <div>
     <v-img
-      :src="ride.image"
+      :src="`${ride.image}?height=200`"
       height="200"
-    />
+    >
+      <template #placeholder>
+        <v-row
+          class="fill-height ma-0"
+          align="center"
+          justify="center"
+        >
+          <v-progress-circular
+            indeterminate
+            color="grey"
+          />
+        </v-row>
+      </template>
+    </v-img>
     <v-container>
       <div class="blue-grey--text text-h6">
         {{ ride.name }}
