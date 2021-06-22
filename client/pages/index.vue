@@ -63,7 +63,7 @@
         >
           <v-card
             hover
-            @click="showModal(ride)"
+            @click="showModal(ride._id)"
           >
             <v-img
               :src="ride.image"
@@ -181,7 +181,7 @@ export default {
     return {
       error: null,
       interval: null,
-      selectedRide: null,
+      selectedId: null,
       modal: false
     };
   },
@@ -189,14 +189,17 @@ export default {
     rides() {
       return this.$store.state.rides.list;
     },
+    selectedRide() {
+      return this.$store.state.rides.list.find(ride => ride._id === this.selectedId);
+    },
     isAlphaSort() {
       return this.$store.state.rides.alphaSort;
     }
   },
   methods: {
-    showModal(ride) {
+    showModal(id) {
       this.modal = true;
-      this.selectedRide = ride;
+      this.selectedId = id;
     },
     hideModal() {
       this.modal = false;
