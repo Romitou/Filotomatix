@@ -49,12 +49,62 @@
       </div>
       <v-divider class="my-4" />
       <div v-if="ride.status === 'open'">
-        <v-btn block class="white--text" color="primary">
-          <v-icon left>
-            mdi-location-enter
-          </v-icon>
-          Accéder à cette file d'attente
-        </v-btn>
+        <v-dialog
+          max-width="600"
+        >
+          <template #activator="{ on, attrs }">
+            <v-btn
+              block
+              dark
+              color="primary"
+              v-bind="attrs"
+              v-on="on"
+            >
+              <v-icon left>
+                mdi-location-enter
+              </v-icon>
+              Accéder à cette file d'attente
+            </v-btn>
+          </template>
+          <template #default="dialog">
+            <v-card>
+              <v-toolbar
+                color="green"
+                dark
+              >
+                <img
+                  alt="Icône Filotomatix"
+                  class="icon pa-1 mr-1"
+                  src="~/assets/filotomatix.png"
+                >
+                Filotomatix Unité
+                <v-spacer></v-spacer>
+                <v-btn
+                  icon
+                  @click="dialog.value = false;"
+                >
+                  <v-icon>mdi-close</v-icon>
+                </v-btn>
+              </v-toolbar>
+              <v-card-text class="mt-3">
+                Accédez directement à l'attraction en évitant une attente de <strong>{{ ride.waitTimeMins }} minutes</strong> en achetant un <span class="green--text"><strong>Filotomatix Unité</strong></span> utilisable une fois sur cette attraction !
+              </v-card-text>
+              <v-card-actions class="justify-end">
+                <v-btn
+                  text
+                >
+                  Non merci
+                </v-btn>
+                <v-btn
+                  text
+                  color="green"
+                >
+                  Acheter
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </template>
+        </v-dialog>
         <p class="mt-1 blue-grey--text subtitle-2" style="text-align: center;">
           Temps d'attente estimé à {{ ride.waitTimeMins }} minute{{ ride.waitTimeMins > 1 ? 's' : '' }}
         </p>
