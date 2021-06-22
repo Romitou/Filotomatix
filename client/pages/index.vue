@@ -57,7 +57,7 @@
       </v-row>
       <v-row dense>
         <v-col
-          v-for="ride in showedRides"
+          v-for="ride in rides"
           :key="ride._id"
           cols="6"
         >
@@ -179,29 +179,21 @@ export default {
   components: { RideModal },
   data() {
     return {
-      rides: [],
-      showedRides: [],
-      isAlphaSort: false,
       error: null,
       interval: null,
       selectedRide: null,
       modal: false
     };
   },
-  mounted() {
-    this.fetchRides();
-    this.interval = setInterval(this.fetchRides, 10000);
-  },
-  beforeDestroy() {
-    clearInterval(this.interval);
+  computed: {
+    rides() {
+      return this.$store.state.rides.list;
+    },
+    isAlphaSort() {
+      return this.$store.state.rides.alphaSort;
+    }
   },
   methods: {
-    async fetchRides() {
-      this.rides = await this.$axios.$get('/rides').catch(() => {});
-      if (this.selectedRide)
-        this.selectedRide = this.rides.find(ride => ride._id === this.selectedRide._id);
-      this.sortRides();
-    },
     showModal(ride) {
       this.modal = true;
       this.selectedRide = ride;
@@ -209,21 +201,9 @@ export default {
     hideModal() {
       this.modal = false;
     },
-    setSort(isAlpha) {
-      this.isAlphaSort = isAlpha;
-      this.sortRides();
-    },
-    sortRides() {
-      if (this.isAlphaSort)
-        this.showedRides = this.rides.sort((a, b) => {
-          if (a.name < b.name)
-            return -1;
-          if (a.name > b.name)
-            return 1;
-          return 0;
-        });
-      else
-        this.showedRides = this.rides.sort((a, b) => a.waitTimeMins - b.waitTimeMins);
+    setSort(alphaSort) {
+      this.$store.commit('rides/setAlphaSort', alphaSort);
+      this.$store.dispatch('rides/fetchRides', this.$axios);
     }
   }
 };
