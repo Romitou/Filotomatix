@@ -13,6 +13,8 @@ export default {
     ]
   },
 
+  globalName: 'filotomatix',
+
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     '~/assets/app.scss'
@@ -78,7 +80,8 @@ export default {
       plugins: [
         ['@babel/plugin-proposal-private-methods', { loose: true }]
       ]
-    }
+    },
+    publicPath: 'filotomatix/'
   },
 
   vuetify: {

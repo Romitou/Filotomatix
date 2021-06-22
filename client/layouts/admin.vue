@@ -82,7 +82,7 @@ export default {
     };
   },
   beforeCreate() {
-    if (!this.$auth.loggedIn && this.$auth.user.admin)
+    if (!this.$auth.loggedIn || !this.$auth.user.admin)
       this.$router.push('/login');
   }
 };
