@@ -9,14 +9,10 @@ export const mutations = {
   },
   setAlphaSort(state, value) {
     state.alphaSort = value;
-  }
-};
-
-export const actions = {
-  async fetchRides({ commit, state }, $axios) {
-    const rides = await $axios.$get('/rides').catch(() => {});
+  },
+  sortRides(state) {
     if (state.alphaSort) {
-      rides.sort((a, b) => {
+      state.list.sort((a, b) => {
         if (a.name < b.name)
           return -1;
         if (a.name > b.name)
@@ -24,8 +20,15 @@ export const actions = {
         return 0;
       });
     } else {
-      rides.sort((a, b) => a.waitTimeMins - b.waitTimeMins);
+      state.list.sort((a, b) => a.waitTimeMins - b.waitTimeMins);
     }
+  }
+};
+
+export const actions = {
+  async fetchRides({ commit }, $axios) {
+    const rides = await $axios.$get('/rides').catch(() => {});
     commit('setRides', rides);
+    commit('sortRides');
   }
 };

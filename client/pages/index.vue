@@ -206,7 +206,7 @@ export default {
     },
     setSort(alphaSort) {
       this.$store.commit('rides/setAlphaSort', alphaSort);
-      this.$store.dispatch('rides/fetchRides', this.$axios);
+      this.$store.commit('rides/sortRides');
     }
   }
 };
